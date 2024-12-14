@@ -1,0 +1,120 @@
+/* match the font on the weld-wise.com site */
+@font-face {
+	font-family: "Lato";
+	src: local("Lato"),
+		url(../fonts/Lato/Lato-Regular.ttf) format("truetype");
+}
+body > * {
+	font-family: Lato, arial, sans-serif;
+}
+
+/* change size of logo in the navbar */
+.navbar-brand {
+	min-width: 100px;
+	padding: 0 !important;
+	margin: 0 !important;
+}
+
+.navbar-brand img {
+	width: 10vw;
+}
+
+/* custom colors */
+.bg-ww-dark {
+	background-color: #145aa0 !important;
+}
+
+.text-ww-dark {
+	color: #145aa0 !important;
+}
+
+.border-ww-dark {
+	border-color: #145aa0 !important;
+}
+
+.bg-light-grey {
+	background-color: #ececec !important;
+}
+
+.border-light-grey {
+	border-color: #ececec;
+}
+
+.bg-ww-light {
+	background-color: #4491dd;
+}
+
+.bg-ww-orange {
+	background-color: #e06227 !important;
+}
+
+.btn-ww-dark {
+	border-color: #2c6cac !important;
+	color: #ffffff !important;
+	background: linear-gradient(#2c6cac, #0d3e6e);
+}
+
+.btn-ww-dark:hover,
+.btn-ww-dark:active,
+.btn-ww-dark:visited {
+	border-color: #26619b !important;
+	color: #ffffff;
+	background: linear-gradient(#26619b, #052646);
+}
+
+.btn-ww-light {
+	border-color: #59a4f0 !important;
+	color: #ffffff !important;
+	background: linear-gradient(#66adf5, #3272b3);
+}
+
+.btn-ww-light:hover,
+.btn-ww-light:active,
+.btn-ww-light:visited {
+	color: #ffffff;
+	background: linear-gradient(#4b96e0, #195591);
+}
+
+.btn-ww-orange {
+	border-color: #c94b11 !important;
+	color: #ffffff !important;
+	background: linear-gradient(#ec7e4b, #c94b11);
+}
+
+.btn-ww-orange:hover,
+.btn-ww-orange:active,
+.btn-ww-orange:visited {
+	color: #ffffff;
+	background: linear-gradient(#dd5f24, #b63b03);
+}
+
+/* override bootstrap colors */
+.form-check-input:checked {
+	background-color: #145aa0 !important;
+	border-color: #145aa0 !important;
+}
+
+/* round scrollbar */
+::-webkit-scrollbar {
+	width: 12px;
+	height: 12px;
+}
+
+::-webkit-scrollbar-track {
+	background: #f5f5f5;
+	border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+	border-radius: 10px;
+	background: #ccc;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: #999;
+}
+
+/* custom cursor class */
+.cursor-pointer {
+	cursor: pointer;
+}
