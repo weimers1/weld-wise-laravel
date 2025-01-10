@@ -1,0 +1,12 @@
+.card-layer {
+    border-right: 7px solid #dd5f24;
+    border-bottom: 7px solid #dd5f24;
+    border-radius: 20px;
+    border-bottom-right-radius: 10px;
+    background-color: #dd5f24;
+}
+
+.card {
+    width: 200px;
+    height: 200px;
+}

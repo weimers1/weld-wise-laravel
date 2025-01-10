@@ -31,7 +31,9 @@ $faqs = [
             <div
                 class="col fs-4"
             >
-                Frequently Asked Questions
+                <i
+                    class="bi bi-question-circle"
+                ></i> Frequently Asked Questions
             </div>
         </div>
         <div
@@ -48,7 +50,7 @@ $faqs = [
                             class="card mt-3"
                         >
                             <div
-                                class="card-header collapsed"
+                                class="card-header collapsed cursor-pointer hover-darken"
                                 data-bs-toggle="collapse"
                                 data-bs-target="#answer-{{ $faq['id'] }}"
                             >

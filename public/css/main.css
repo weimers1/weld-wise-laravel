@@ -37,11 +37,11 @@ body > * {
 }
 
 .border-light-grey {
-	border-color: #ececec;
+	border-color: #ececec !important;
 }
 
 .bg-ww-light {
-	background-color: #4491dd;
+	background-color: #4491dd !important;
 }
 
 .bg-ww-orange {
@@ -51,41 +51,40 @@ body > * {
 .btn-ww-dark {
 	border-color: #2c6cac !important;
 	color: #ffffff !important;
-	background: linear-gradient(#2c6cac, #0d3e6e);
+	background-color: #2c6cac !important;
 }
 
 .btn-ww-dark:hover,
-.btn-ww-dark:active,
-.btn-ww-dark:visited {
+.btn-ww-dark:active {
 	border-color: #26619b !important;
 	color: #ffffff;
-	background: linear-gradient(#26619b, #052646);
+	background-color: #26619b !important;
 }
 
 .btn-ww-light {
-	border-color: #59a4f0 !important;
+	border-color: #66adf5 !important;
 	color: #ffffff !important;
-	background: linear-gradient(#66adf5, #3272b3);
+	background-color: #66adf5 !important;
 }
 
 .btn-ww-light:hover,
-.btn-ww-light:active,
-.btn-ww-light:visited {
+.btn-ww-light:active {
+	border-color: #4b96e0 !important;
 	color: #ffffff;
-	background: linear-gradient(#4b96e0, #195591);
+	background-color: #4b96e0 !important;
 }
 
 .btn-ww-orange {
-	border-color: #c94b11 !important;
+	border-color: #dd5f24 !important;
 	color: #ffffff !important;
-	background: linear-gradient(#ec7e4b, #c94b11);
+	background-color: #dd5f24 !important;
 }
 
 .btn-ww-orange:hover,
-.btn-ww-orange:active,
-.btn-ww-orange:visited {
+.btn-ww-orange:active {
+	border-color: #c75520 !important;
 	color: #ffffff;
-	background: linear-gradient(#dd5f24, #b63b03);
+	background-color: #c75520 !important;
 }
 
 /* override bootstrap colors */
@@ -101,17 +100,22 @@ body > * {
 }
 
 ::-webkit-scrollbar-track {
-	background: #f5f5f5;
+	background-color: #f5f5f5;
 	border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb {
 	border-radius: 10px;
-	background: #ccc;
+	background-color: #ccc;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-	background: #999;
+	background-color: #999;
+}
+
+/* custom hover class */
+.hover-darken:hover {
+	background-image: linear-gradient(rgb(0 0 0/10%) 0 0) !important;
 }
 
 /* custom cursor class */
