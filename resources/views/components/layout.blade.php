@@ -19,7 +19,7 @@
         <!-- Main CSS -->
         <link
             type="text/css"
-            href="css/main.css"
+            href="/css/main.css"
             rel="stylesheet"
         />
 

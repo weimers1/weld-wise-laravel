@@ -54,8 +54,7 @@ body > * {
 	background-color: #2c6cac !important;
 }
 
-.btn-ww-dark:hover,
-.btn-ww-dark:active {
+.btn-ww-dark:hover {
 	border-color: #26619b !important;
 	color: #ffffff;
 	background-color: #26619b !important;
@@ -67,24 +66,27 @@ body > * {
 	background-color: #66adf5 !important;
 }
 
-.btn-ww-light:hover,
-.btn-ww-light:active {
+.btn-ww-light:hover {
 	border-color: #4b96e0 !important;
 	color: #ffffff;
 	background-color: #4b96e0 !important;
 }
 
 .btn-ww-orange {
-	border-color: #dd5f24 !important;
+	border-color: #ec6a2d !important;
 	color: #ffffff !important;
-	background-color: #dd5f24 !important;
+	background-color: #e7662b !important;
 }
 
-.btn-ww-orange:hover,
-.btn-ww-orange:active {
+.btn-ww-orange:hover {
 	border-color: #c75520 !important;
 	color: #ffffff;
 	background-color: #c75520 !important;
+}
+
+.error {
+	color: #ee1c1c;
+	font-weight: bold;
 }
 
 /* override bootstrap colors */

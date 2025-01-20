@@ -23,7 +23,7 @@ $tiles = [
     <x-slot:includes>
         <link
             type="text/css"
-            href="css/home.css"
+            href="/css/home.css"
             rel="stylesheet"
         />
     </x-slot:includes>
@@ -33,6 +33,13 @@ $tiles = [
     <div
         class="container pt-3"
     >
+        <div
+            class="row pt-4"
+        >
+            <h1
+                class="fw-bold"
+            >Welcome{{ auth()->check() ? ', ' . auth()->user()->name_first : ' to the Weld WISE testing site' }}!</h1>
+        </div>
         <div
             class="row pt-4"
         >

@@ -1,3 +1,4 @@
+{{ isset($modal_info) ? dd($modal_info) : '' }}
 <nav
     class="navbar navbar-expand-lg navbar-dark bg-ww-dark w-100 shadow"
 >
@@ -7,7 +8,7 @@
     >
         <img
             class="img-fluid navbar-brand"
-            src="images/weld-wise.png"
+            src="/images/weld-wise.png"
             alt="Weld WISE"
         />
     </a>
@@ -60,7 +61,7 @@
             class="navbar-nav ms-auto"
         >
             <li
-                class="nav-item dropdown pe-2 d-none"
+                class="nav-item dropdown pe-2 {{ auth()->check() ? '' : 'd-none' }}"
             >
                 <a
                     class="nav-link dropdown-toggle"
@@ -102,7 +103,7 @@
                 </ul>
             </li>
             <li
-                class="nav-item dropdown pe-2"
+                class="nav-item dropdown pe-2 {{ auth()->check() ? 'd-none' : '' }}"
             >
                 <a
                     class="nav-link"
