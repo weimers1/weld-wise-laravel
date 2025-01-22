@@ -24,10 +24,6 @@ body > * {
 	background-color: #145aa0 !important;
 }
 
-.text-ww-dark {
-	color: #145aa0 !important;
-}
-
 .border-ww-dark {
 	border-color: #145aa0 !important;
 }
@@ -73,9 +69,9 @@ body > * {
 }
 
 .btn-ww-orange {
-	border-color: #ec6a2d !important;
+	border-color: #e06227 !important;
 	color: #ffffff !important;
-	background-color: #e7662b !important;
+	background-color: #e06227 !important;
 }
 
 .btn-ww-orange:hover {
@@ -123,4 +119,21 @@ body > * {
 /* custom cursor class */
 .cursor-pointer {
 	cursor: pointer;
+}
+
+/* custom font sizes */
+.fs-85 {
+	font-size: 85px;
+}
+
+/* custom postion class */
+.bottom-10 {
+	position: absolute;
+	bottom: 10px;
+}
+
+@media (max-width: 600px) {
+	.bottom-10 {
+		position: relative;
+	}
 }

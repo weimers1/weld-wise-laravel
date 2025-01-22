@@ -1,6 +1,6 @@
 @props(['title' => '', 'icon' => '', 'link' => ''])
 <div
-    class="col-4 fs-1 d-flex justify-content-center"
+    class="col-12 col-md-4 fs-1 d-flex justify-content-center pt-4"
 >
     <a
         class="text-decoration-none text-black"
@@ -10,7 +10,7 @@
             class="card-layer shadow cursor-pointer"
         >
             <div
-                class="card shadow p-4 hover-darken text-capitalize text-center"
+                class="card shadow p-4 hover-darken text-center"
             >
                 {{ $title }}
                 <i

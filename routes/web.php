@@ -13,6 +13,10 @@ Route::get('/faq', function () {
 
 Route::get('/user/authenticate', [SessionController::class, 'authenticate']);
 
+Route::get('/user/login', function () {
+    return view('auth.index');
+});
+
 Route::post('/user/login', [SessionController::class, 'create']);
 
 Route::post('/user/create', [SessionController::class, 'create'], ['loggingIn' => false]);
