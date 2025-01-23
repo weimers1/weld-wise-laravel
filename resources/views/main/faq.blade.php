@@ -20,7 +20,6 @@ $faqs = [
 <x-layout
     pageTitle="FAQ"
 >
-    <x-navbar></x-navbar>
 
     <div
         class="container pt-3"
@@ -76,4 +75,5 @@ $faqs = [
             </div>
         </div>
     </div>
+
 </x-layout>

@@ -9,8 +9,6 @@
         />
     </x-slot:includes>
 
-    <x-navbar></x-navbar>
-
     <div
         class="container"
     >
@@ -169,18 +167,19 @@
             </div>
         </div>
     </div>
+
+    @if (session('modal_info'))
+        <x-modal
+            id="modal"
+            title="{{ session('modal_info')['title'] }}"
+        >{{ session('modal_info')['body'] }}</x-modal>
+
+        <script>
+            window.addEventListener('DOMContentLoaded', () => {
+                const modal = new bootstrap.Modal(document.getElementById('modal'));
+                modal.show();
+            });
+        </script>
+    @endif
+
 </x-layout>
-
-@if (session('modal_info'))
-    <x-modal
-        id="modal"
-        title="{{ session('modal_info')['title'] }}"
-    >{{ session('modal_info')['body'] }}</x-modal>
-
-    <script>
-        window.addEventListener('DOMContentLoaded', () => {
-            const modal = new bootstrap.Modal(document.getElementById('modal'));
-            modal.show();
-        });
-    </script>
-@endif

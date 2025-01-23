@@ -46,7 +46,13 @@
     <body
         class="bg-ww-light text-white user-select-none"
     >
+
+        <x-header></x-header>
+
         {{ $slot }}
+
+        <x-footer></x-footer>
+
     </body>
 
 </html>

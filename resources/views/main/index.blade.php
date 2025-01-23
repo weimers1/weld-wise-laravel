@@ -20,6 +20,7 @@ $tiles = [
 <x-layout
     pageTitle="Home"
 >
+
     <x-slot:includes>
         <link
             type="text/css"
@@ -27,8 +28,6 @@ $tiles = [
             rel="stylesheet"
         />
     </x-slot:includes>
-
-    <x-navbar></x-navbar>
 
     <div
         class="container pt-3"
@@ -44,7 +43,6 @@ $tiles = [
                 ></x-tile>
             @endforeach
         </div>
-
-        <x-footer></x-footer>
     </div>
+
 </x-layout>
