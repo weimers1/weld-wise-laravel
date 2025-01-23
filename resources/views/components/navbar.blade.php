@@ -1,104 +1,4 @@
 <header>
-    {{-- <nav
-        class="navbar navbar-expand-lg navbar-dark bg-ww-dark w-100 shadow"
-        aria-label="Main navigation"
-    >
-        <a
-            class="nav-link ps-2 navbar-brand"
-            href="/"
-        >
-            
-        </a>
-
-        <button
-            class="navbar-toggler"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbar"
-            type="button"
-        >
-            <span
-                class="navbar-toggler-icon"
-            >
-            </span>
-        </button>
-        <div
-            class="collapse navbar-collapse"
-            id="navbar"
-        >
-            <ul
-                class="navbar-nav flex-row"
-            >
-                <li
-                    class="nav-item"
-                >
-                    <a
-                        class="nav-link"
-                        href="/"
-                    >
-                        <i
-                            class="bi bi-house-fill"
-                        >
-                        </i> Home
-                    </a>
-                </li>
-                <li
-                    class="nav-item"
-                >
-                    
-                </li>
-            </ul>
-            <ul
-                class="navbar-nav flex-row ml-md-auto d-none d-md-flex pe-2"
-            >
-                @if (auth()->check())
-                    <li
-                        class="nav-item"
-                    >
-                        <a
-                            class="badge bg-ww-orange mt-2 me-2 text-decoration-none no-underline"
-                            href="/user/settings"
-                        >
-                            {{ auth()->user()->name_first . ' ' . auth()->user()->name_last }}
-                        </a>
-                    </li>
-                @endif
-                <li
-                    class="nav-item dropdown pe-2 {{ auth()->check() ? '' : 'd-none' }}"
-                >
-                    <a
-                        class="nav-link dropdown-toggle"
-                        data-bs-toggle="dropdown"
-                        href="javascript:void(0)"
-                        role="button"
-                    >
-                        <i
-                            class="bi bi-person-fill"
-                        >
-                        </i> Profile
-                    </a>
-                    <ul
-                        class="dropdown-menu dropdown-menu-end shadow"
-                    >
-                        
-                    </ul>
-                </li>
-                <li
-                    class="nav-item dropdown pe-2 {{ auth()->check() ? 'd-none' : '' }}"
-                >
-                    <a
-                        class="nav-link"
-                        href="/user/login"
-                        role="button"
-                    >
-                        <i
-                            class="bi bi-person-fill"
-                        >
-                        </i> Log In
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </nav> --}}
     <nav
         class="navbar navbar-expand-md bg-ww-dark shadow"
         aria-label="Main page navigation"
@@ -138,7 +38,7 @@
                     class="navbar-nav me-auto mb-2 mb-md-0"
                 >
                     <a
-                        class="nav-link text-white"
+                        class="nav-link text-ww-grey"
                         href="/"
                     >
                         <i
@@ -150,7 +50,7 @@
                         class="nav-item"
                     >
                         <a
-                            class="nav-link text-white"
+                            class="nav-link text-ww-grey"
                             href="/faq"
                         >
                             <i
@@ -179,7 +79,7 @@
                         class="nav-item {{ auth()->check() ? 'd-none' : '' }}"
                     >
                         <a
-                            class="nav-link text-white"
+                            class="nav-link text-ww-grey"
                             href="/user/login"
                         >
                             <i
@@ -192,7 +92,7 @@
                         class="nav-item dropdown {{ auth()->check() ? '' : 'd-none' }}"
                     >
                         <a
-                            class="nav-link dropdown-toggle text-white"
+                            class="nav-link dropdown-toggle text-ww-grey"
                             id="profile-actions"
                             data-bs-toggle="dropdown"
                             href="#"

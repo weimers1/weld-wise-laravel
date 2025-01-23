@@ -19,6 +19,11 @@ body > * {
 	width: 10vw;
 }
 
+/* change the size of the logo in the footer */
+#footer-logo {
+	width: 105px;
+}
+
 /* custom colors */
 .bg-ww-dark {
 	background-color: #145aa0 !important;
@@ -34,6 +39,10 @@ body > * {
 
 .border-light-grey {
 	border-color: #ececec !important;
+}
+
+.text-ww-grey {
+	color: #d1d1d1 !important;
 }
 
 .bg-ww-light {
