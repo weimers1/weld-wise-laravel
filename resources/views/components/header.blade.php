@@ -116,7 +116,7 @@ $pages = [
                                     class="dropdown-item btn-ww-orange"
                                     title="Log Out"
                                     icon="bi-box-arrow-right"
-                                    link="/"
+                                    link="/user/logout"
                                 ></x-nav-item>
                             </ul>
                         </li>

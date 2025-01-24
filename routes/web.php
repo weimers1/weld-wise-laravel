@@ -17,6 +17,8 @@ Route::get('/user/login', function () {
     return view('auth.index');
 });
 
+Route::get('/user/logout', [SessionController::class, 'destroy']);
+
 Route::post('/user/login', [SessionController::class, 'create']);
 
 Route::post('/user/create', [SessionController::class, 'create'], ['loggingIn' => false]);

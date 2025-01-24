@@ -145,13 +145,20 @@
                 </form>
             </div>
         </div>
-        <div
-            class="m-2"
+        {{-- @TODO: get permission to use Stytch logo for disclaimer --}}
+        {{-- <div
+            class="m-2 mt-4"
         >
-            <img
-                src="https://ci3.googleusercontent.com/meips/ADKq_NambeXk6D2GKTGtYuXInfv_89XOrUtPQMRcSrxmx_tgy-drysxmNE171TvQQMuP1IUwZJrwKTT6uJ52X4vCzG0m7shEs_eNb-2X5oplYGR9R1NYIA=s0-d-e1-ft#https://public-assets.stytch.com/et_powered_by_stytch_logo.png"
-                alt="Powered by Stytch"
+            <span
+                class="text-uppercase text-navy"
             >
-        </div>
+                Powered By&nbsp;
+            </span>
+            <img
+                class="stytch-logo mb-1"
+                src="/images/stytch.png"
+                alt="Powered by Stytch"
+            />
+        </div> --}}
     </div>
 </div>
