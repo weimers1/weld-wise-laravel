@@ -49,7 +49,9 @@
 
         <x-header></x-header>
 
-        {{ $slot }}
+        <main>
+            {{ $slot }}
+        </main>
 
         <x-footer></x-footer>
 
