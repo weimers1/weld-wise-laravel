@@ -41,7 +41,7 @@ body > * {
 	border-color: #ececec !important;
 }
 
-.text-ww-grey {
+.text-ww-grey, .text-ww-grey * {
 	color: #d1d1d1 !important;
 }
 
@@ -81,6 +81,10 @@ body > * {
 	border-color: #e06227 !important;
 	color: #ffffff !important;
 	background-color: #e06227 !important;
+}
+
+.btn-ww-orange * {
+	color: #ffffff !important;
 }
 
 .btn-ww-orange:hover {

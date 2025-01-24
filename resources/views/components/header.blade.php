@@ -1,3 +1,22 @@
+<?php
+$pages = [
+    [
+        'title' => 'Home',
+        'icon' => 'bi-house',
+        'link' => '/test',
+    ],
+    [
+        'title' => 'Tests',
+        'icon' => 'bi-file-text',
+        'link' => '/test',
+    ],
+    [
+        'title' => 'FAQ',
+        'icon' => 'bi-question-circle',
+        'link' => '/faq',
+    ],
+];
+?>
 <header>
     <nav
         class="navbar navbar-expand-md bg-ww-dark shadow"
@@ -37,32 +56,26 @@
                 <ul
                     class="navbar-nav me-auto mb-2 mb-md-0"
                 >
-                    <a
-                        class="nav-link text-ww-grey"
-                        href="/"
-                    >
-                        <i
-                            class="bi bi-house-fill"
-                        >
-                        </i> Home
-                    </a>
-                    <li
-                        class="nav-item"
-                    >
-                        <a
-                            class="nav-link text-ww-grey"
-                            href="/faq"
-                        >
-                            <i
-                                class="bi bi-question-circle-fill"
-                            >
-                            </i> FAQ
-                        </a>
-                    </li>
+                    @foreach ($pages as $nav_item)
+                        <x-nav-item
+                            class="text-ww-grey"
+                            title="{{ $nav_item['title'] }}"
+                            icon="{{ $nav_item['icon'] }}"
+                            link="{{ $nav_item['link'] }}"
+                        ></x-nav-item>
+                    @endforeach
                 </ul>
                 <ul
                     class="navbar-nav mb-2 mb-md-0"
                 >
+                    @if (!auth()->check())
+                        <x-nav-item
+                            class="text-ww-grey"
+                            title="Log In"
+                            icon="bi-box-arrow-in-right"
+                            link="/user/login"
+                        ></x-nav-item>
+                    @endif
                     @if (auth()->check())
                         <li
                             class="nav-item"
@@ -74,63 +87,40 @@
                                 {{ auth()->user()->name_first . ' ' . auth()->user()->name_last }}
                             </a>
                         </li>
+                        <li
+                            class="nav-item dropdown {{ auth()->check() ? '' : 'd-none' }}"
+                        >
+                            <a
+                                class="nav-link dropdown-toggle text-ww-grey"
+                                id="profile-actions"
+                                data-bs-toggle="dropdown"
+                                href="#"
+                                aria-expanded="false"
+                            >
+                                <i
+                                    class="bi bi-person-fill"
+                                >
+                                </i> Profile
+                            </a>
+                            <ul
+                                class="dropdown-menu dropdown-menu-end shadow bg-ww-orange"
+                                aria-labelledby="profile-actions"
+                            >
+                                <x-nav-item
+                                    class="dropdown-item btn-ww-orange"
+                                    title="Settings"
+                                    icon="bi-gear-fill"
+                                    link="/user/settings"
+                                ></x-nav-item>
+                                <x-nav-item
+                                    class="dropdown-item btn-ww-orange"
+                                    title="Log Out"
+                                    icon="bi-box-arrow-right"
+                                    link="/"
+                                ></x-nav-item>
+                            </ul>
+                        </li>
                     @endif
-                    <li
-                        class="nav-item {{ auth()->check() ? 'd-none' : '' }}"
-                    >
-                        <a
-                            class="nav-link text-ww-grey"
-                            href="/user/login"
-                        >
-                            <i
-                                class="bi bi-box-arrow-in-right"
-                            >
-                            </i> Log In
-                        </a>
-                    </li>
-                    <li
-                        class="nav-item dropdown {{ auth()->check() ? '' : 'd-none' }}"
-                    >
-                        <a
-                            class="nav-link dropdown-toggle text-ww-grey"
-                            id="profile-actions"
-                            data-bs-toggle="dropdown"
-                            href="#"
-                            aria-expanded="false"
-                        >
-                            <i
-                                class="bi bi-person-fill"
-                            >
-                            </i> Profile
-                        </a>
-                        <ul
-                            class="dropdown-menu dropdown-menu-end shadow bg-ww-orange"
-                            aria-labelledby="profile-actions"
-                        >
-                            <li>
-                                <a
-                                    class="dropdown-item btn-ww-orange"
-                                    href="/user/settings"
-                                >
-                                    <i
-                                        class="bi bi-gear-fill"
-                                    >
-                                    </i> Settings
-                                </a>
-                            </li>
-                            <li>
-                                <a
-                                    class="dropdown-item btn-ww-orange"
-                                    href="/"
-                                >
-                                    <i
-                                        class="bi bi-box-arrow-right"
-                                    >
-                                    </i> Log Out
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
                 </ul>
             </div>
         </div>

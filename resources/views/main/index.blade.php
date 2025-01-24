@@ -1,5 +1,5 @@
 <?php
-$tiles = [
+$pages = [
     [
         'title' => 'Tests',
         'icon' => 'bi-file-text',
@@ -35,7 +35,7 @@ $tiles = [
         <div
             class="row pt-4"
         >
-            @foreach ($tiles as $tile)
+            @foreach ($pages as $tile)
                 <x-tile
                     :title="$tile['title']"
                     :icon="$tile['icon']"
