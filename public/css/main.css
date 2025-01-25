@@ -102,6 +102,10 @@ body > * {
 	color: #0a2a4b !important;
 }
 
+.text-white-recursive * {
+	color: #ffffff !important;
+}
+
 /* override bootstrap colors */
 .form-check-input:checked {
 	background-color: #145aa0 !important;

@@ -14,22 +14,22 @@
                 class="nav-item"
             >
                 <a
-                    class="nav-link {{ $errors->has('email_log_in') ? '' : 'active' }} cursor-pointer"
+                    class="nav-link {{ $errors->has('email_log_in') ? 'active' : '' }} cursor-pointer"
                     data-bs-toggle="pill"
-                    data-bs-target="#sign-up-tab"
+                    data-bs-target="#log-in-tab"
                 >
-                    Sign Up
+                    Log In
                 </a>
             </li>
             <li
                 class="nav-item"
             >
                 <a
-                    class="nav-link {{ $errors->has('email_log_in') ? 'active' : '' }} cursor-pointer"
+                    class="nav-link {{ $errors->has('email_log_in') ? '' : 'active' }} cursor-pointer"
                     data-bs-toggle="pill"
-                    data-bs-target="#log-in-tab"
+                    data-bs-target="#sign-up-tab"
                 >
-                    Log In
+                    Sign Up
                 </a>
             </li>
         </ul>

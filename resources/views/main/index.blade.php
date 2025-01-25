@@ -15,6 +15,11 @@ $pages = [
         'icon' => 'bi-person',
         'link' => '/user/home',
     ],
+    [
+        'title' => 'Log In',
+        'icon' => 'bi-box-arrow-in-right',
+        'link' => '/user/login',
+    ],
 ];
 ?>
 <x-layout

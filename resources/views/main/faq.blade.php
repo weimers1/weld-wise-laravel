@@ -28,7 +28,7 @@ $faqs = [
             class="row"
         >
             <div
-                class="col fs-4"
+                class="col fs-4 text-white"
             >
                 <i
                     class="bi bi-question-circle"

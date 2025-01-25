@@ -1,3 +1,23 @@
+<?php
+$pages = [
+    [
+        'title' => 'Home',
+        'link' => '/',
+    ],
+    [
+        'title' => 'Tests',
+        'link' => '/test',
+    ],
+    [
+        'title' => 'FAQ',
+        'link' => '/faq',
+    ],
+    [
+        'title' => 'Log In',
+        'link' => '/user/login',
+    ],
+];
+?>
 <footer
     class="container"
 >
@@ -31,38 +51,14 @@
             <ul
                 class="nav justify-content-center"
             >
-                <li
-                    class="nav-item p-3"
-                ><a
-                        class="nav-link p-0 text-white"
-                        href="/"
-                    >
-                        Home
-                    </a></li>
-                <li
-                    class="nav-item p-3"
-                ><a
-                        class="nav-link p-0 text-white"
-                        href="/tests"
-                    >
-                        Tests
-                    </a></li>
-                <li
-                    class="nav-item p-3"
-                ><a
-                        class="nav-link p-0 text-white"
-                        href="/faq"
-                    >
-                        FAQ
-                    </a></li>
-                <li
-                    class="nav-item p-3"
-                ><a
-                        class="nav-link p-0 text-white"
-                        href="/user/settings"
-                    >
-                        Profile
-                    </a></li>
+                @foreach ($pages as $nav_item)
+                    <x-nav-item
+                        class="p-1 text-white-recursive"
+                        title="{{ $nav_item['title'] }}"
+                        icon=''
+                        link="{{ $nav_item['link'] }}"
+                    ></x-nav-item>
+                @endforeach
             </ul>
         </div>
 
@@ -73,7 +69,7 @@
                 class="row row-cols-1 row-cols-sm-2"
             >
                 <div
-                    class="col my-2"
+                    class="col my-2 text-white"
                 >
                     Looking for our main website?
                 </div>

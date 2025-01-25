@@ -44,12 +44,14 @@
     </head>
 
     <body
-        class="bg-ww-light text-white user-select-none"
+        class="bg-ww-light user-select-none"
     >
 
         <x-header></x-header>
 
-        <main>
+        <main
+            class="min-vh-100"
+        >
             {{ $slot }}
         </main>
 

@@ -1,5 +1,5 @@
 <x-layout
-    pageTitle="FAQ"
+    pageTitle="Log In"
 >
     <x-slot:includes>
         <link
