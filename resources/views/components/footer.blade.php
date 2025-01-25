@@ -1,22 +1,6 @@
 <?php
-$pages = [
-    [
-        'title' => 'Home',
-        'link' => '/',
-    ],
-    [
-        'title' => 'Tests',
-        'link' => '/test',
-    ],
-    [
-        'title' => 'FAQ',
-        'link' => '/faq',
-    ],
-    [
-        'title' => 'Log In',
-        'link' => '/user/login',
-    ],
-];
+use App\Models\Page;
+$pages = Page::footer();
 ?>
 <footer
     class="container"

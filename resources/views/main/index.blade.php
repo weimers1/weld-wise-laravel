@@ -1,26 +1,6 @@
 <?php
-$pages = [
-    [
-        'title' => 'Tests',
-        'icon' => 'bi-file-text',
-        'link' => '/test',
-    ],
-    [
-        'title' => 'FAQ',
-        'icon' => 'bi-question-circle',
-        'link' => '/faq',
-    ],
-    [
-        'title' => 'Profile',
-        'icon' => 'bi-person',
-        'link' => '/user/home',
-    ],
-    [
-        'title' => 'Log In',
-        'icon' => 'bi-box-arrow-in-right',
-        'link' => '/user/login',
-    ],
-];
+use App\Models\Page;
+$pages = Page::tiles();
 ?>
 <x-layout
     pageTitle="Home"

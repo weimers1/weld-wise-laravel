@@ -142,11 +142,6 @@ body > * {
 	cursor: pointer;
 }
 
-/* custom font sizes */
-.fs-85 {
-	font-size: 85px;
-}
-
 /* custom postion class */
 .bottom-10 {
 	position: absolute;

@@ -14,7 +14,7 @@
             >
                 {{ $title }}
                 <i
-                    class="pt-3 bi {{ $icon }}"
+                    class="bi tile-icon mt-2 mt-md-0 {{ $icon }}"
                 ></i>
             </div>
         </div>

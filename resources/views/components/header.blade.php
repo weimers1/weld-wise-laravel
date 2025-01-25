@@ -1,21 +1,6 @@
 <?php
-$pages = [
-    [
-        'title' => 'Home',
-        'icon' => 'bi-house',
-        'link' => '/test',
-    ],
-    [
-        'title' => 'Tests',
-        'icon' => 'bi-file-text',
-        'link' => '/test',
-    ],
-    [
-        'title' => 'FAQ',
-        'icon' => 'bi-question-circle',
-        'link' => '/faq',
-    ],
-];
+use App\Models\Page;
+$pages = Page::header();
 ?>
 <header>
     <nav
@@ -88,7 +73,7 @@ $pages = [
                             </a>
                         </li>
                         <li
-                            class="nav-item dropdown {{ auth()->check() ? '' : 'd-none' }}"
+                            class="nav-item dropdown"
                         >
                             <a
                                 class="nav-link dropdown-toggle text-ww-grey"

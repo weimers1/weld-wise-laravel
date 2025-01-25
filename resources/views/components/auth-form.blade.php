@@ -14,7 +14,7 @@
                 class="nav-item"
             >
                 <a
-                    class="nav-link {{ $errors->has('email_log_in') ? 'active' : '' }} cursor-pointer"
+                    class="nav-link {{ $errors->has('email_sign_up') ? '' : 'active' }} cursor-pointer"
                     data-bs-toggle="pill"
                     data-bs-target="#log-in-tab"
                 >
@@ -25,7 +25,7 @@
                 class="nav-item"
             >
                 <a
-                    class="nav-link {{ $errors->has('email_log_in') ? '' : 'active' }} cursor-pointer"
+                    class="nav-link {{ $errors->has('email_sign_up') ? 'active' : '' }} cursor-pointer"
                     data-bs-toggle="pill"
                     data-bs-target="#sign-up-tab"
                 >
@@ -37,7 +37,40 @@
             class="tab-content"
         >
             <div
-                class="tab-pane {{ $errors->has('email_log_in') ? '' : 'active show' }}"
+                class="tab-pane {{ $errors->has('email_sign_up') ? '' : 'active show' }}"
+                id="log-in-tab"
+            >
+                <form
+                    method="POST"
+                    action="/user/login"
+                >
+                    @csrf
+                    <h5
+                        class="card-title mb-4"
+                    >Log In</h5>
+                    <label
+                        for="email-log-in"
+                    >Email</label>
+                    <input
+                        class="form-control"
+                        id="email-log-in"
+                        name="email_log_in"
+                        type="email"
+                        value="{{ old('email_log_in') }}"
+                    />
+                    @if ($errors->has('email_log_in'))
+                        <div
+                            class="error"
+                        >{{ $errors->first('email_log_in') }}</div>
+                    @endif
+                    <button
+                        class="btn btn-ww-orange mt-4"
+                        type="submit"
+                    >Log In</button>
+                </form>
+            </div>
+            <div
+                class="tab-pane {{ $errors->has('email_sign_up') ? 'active show' : '' }}"
                 id="sign-up-tab"
             >
                 <form
@@ -109,39 +142,6 @@
                         class="btn btn-ww-orange mt-4"
                         type="submit"
                     >Sign Up</button>
-                </form>
-            </div>
-            <div
-                class="tab-pane {{ $errors->has('email_log_in') ? 'active show' : '' }}"
-                id="log-in-tab"
-            >
-                <form
-                    method="POST"
-                    action="/user/login"
-                >
-                    @csrf
-                    <h5
-                        class="card-title mb-4"
-                    >Log In</h5>
-                    <label
-                        for="email-log-in"
-                    >Email</label>
-                    <input
-                        class="form-control"
-                        id="email-log-in"
-                        name="email_log_in"
-                        type="email"
-                        value="{{ old('email_log_in') }}"
-                    />
-                    @if ($errors->has('email_log_in'))
-                        <div
-                            class="error"
-                        >{{ $errors->first('email_log_in') }}</div>
-                    @endif
-                    <button
-                        class="btn btn-ww-orange mt-4"
-                        type="submit"
-                    >Log In</button>
                 </form>
             </div>
         </div>
