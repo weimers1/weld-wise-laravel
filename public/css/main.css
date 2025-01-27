@@ -112,6 +112,18 @@ body > * {
 	border-color: #145aa0 !important;
 }
 
+/* override laravel colors */
+.pagination * {
+	color: #000000 !important;
+}
+
+.pagination .page-item.active,
+.pagination .page-item.active * {
+	color: #ffffff !important;
+	background-color: #e06227 !important;
+	border: #e06227 !important;
+}
+
 /* round scrollbar */
 ::-webkit-scrollbar {
 	width: 12px;

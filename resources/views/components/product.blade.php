@@ -3,36 +3,50 @@
     'description' => '',
     'price' => '',
 ])
+<x-slot:includes>
+    <link
+        type="text/css"
+        href="/css/product.css"
+        rel="stylesheet"
+    />
+</x-slot:includes>
+
 <div
-    class="card col-md-4 col"
+    class="product col-md-4 col-12"
 >
     <div
-        class="card-header"
+        class="card w-100"
     >
-        <h5
-            class="py-1 fw-bold"
+        <div
+            class="card-header"
         >
-            Test 1
-        </h5>
-        <p>
-            {{ $description }}
-        </p>
-    </div>
-    <div
-        class="card-body d-flex"
-    >
-        <button
-            class="btn btn-ww-orange"
-            type="button"
+            <h5
+                class="py-1 fw-bold"
+            >
+                {{ $title }}
+            </h5>
+            <p
+                class="h-50 overflow-auto"
+            >
+                {{ $description }}
+            </p>
+        </div>
+        <div
+            class="card-body d-flex"
         >
-            <i
-                class="bi bi-cart"
-            ></i> Add to Cart
-        </button>
-        <span
-            class="fw-bold mt-2 ms-auto"
-        >
-            ${{ number_format($price, 2, '.', ',') }}
-        </span>
+            <button
+                class="btn btn-ww-orange"
+                type="button"
+            >
+                <i
+                    class="bi bi-cart"
+                ></i> Add to Cart
+            </button>
+            <span
+                class="fw-bold mt-2 ms-auto"
+            >
+                ${{ number_format($price, 2, '.', ',') }}
+            </span>
+        </div>
     </div>
 </div>

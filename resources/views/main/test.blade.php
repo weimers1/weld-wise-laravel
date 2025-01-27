@@ -1,12 +1,6 @@
 <?php
-$products = [
-    [
-        'title' => 'Test 1',
-        'description' => 'This is a sample description of test 1. There is a decent amount of text here to show what
-            it might look like on multiple lines.',
-        'price' => 35.0,
-    ],
-];
+use App\Models\Test;
+$tests = Test::paginate(3);
 ?>
 <x-layout
     pageTitle="Tests"
@@ -24,23 +18,19 @@ $products = [
         <div
             class="row"
         >
-            <div
-                class="col"
-            >
-
-            </div>
+            @foreach ($tests as $product)
+                <x-product
+                    title="{{ $product['title'] }}"
+                    description="{{ $product['description'] }}"
+                    price="{{ $product['price'] }}"
+                ></x-product>
+            @endforeach
         </div>
 
         <div
-            class="row-cols-1 row-cols-sm-3"
+            class="rounded bg-white mt-2 px-4 pt-3"
         >
-            @foreach ($products as $test)
-                <x-product
-                    title="{{ $test['title'] }}"
-                    description="{{ $test['description'] }}"
-                    price="{{ $test['price'] }}"
-                ></x-product>
-            @endforeach
+            {{ $tests->links() }}
         </div>
     </div>
 
