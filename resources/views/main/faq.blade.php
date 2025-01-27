@@ -24,17 +24,11 @@ $faqs = [
     <div
         class="container pt-3"
     >
-        <div
-            class="row"
+        <h2
+            class="text-white my-4"
         >
-            <div
-                class="col fs-4 text-white"
-            >
-                <i
-                    class="bi bi-question-circle"
-                ></i> Frequently Asked Questions
-            </div>
-        </div>
+            Frequently Asked Questions
+        </h2>
         <div
             class="row"
         >

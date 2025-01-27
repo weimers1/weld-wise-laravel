@@ -17,6 +17,10 @@ Route::get('/user/login', function () {
     return view('auth.index');
 });
 
+Route::get('/test', function () {
+    return view('main.test');
+});
+
 Route::get('/user/logout', [SessionController::class, 'destroy']);
 
 Route::post('/user/login', [SessionController::class, 'create']);
