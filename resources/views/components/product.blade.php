@@ -12,7 +12,7 @@
 </x-slot:includes>
 
 <div
-    class="product col-md-4 col-12 mb-md-0 mb-4"
+    class="product col-md-4 col-12 mb-md-0 mb-4 mt-4"
 >
     <div
         class="card w-100"
