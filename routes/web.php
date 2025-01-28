@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\SessionController;
+use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -17,9 +18,7 @@ Route::get('/user/login', function () {
     return view('auth.index');
 });
 
-Route::get('/test', function () {
-    return view('main.test');
-});
+Route::get('/test', [TestController::class, 'get']);
 
 Route::get('/user/logout', [SessionController::class, 'destroy']);
 
