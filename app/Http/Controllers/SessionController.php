@@ -50,7 +50,7 @@ class SessionController extends Controller
         }
 
         if ($loggingIn) {
-            $result = $request->validate(
+            $request->validate(
                 [
                     'email_log_in' => 'required|email',
                 ],
@@ -165,5 +165,10 @@ class SessionController extends Controller
 
         // redirect to home page
         return redirect("/");
+    }
+
+    public function get()
+    {
+        return view('auth.index');
     }
 }

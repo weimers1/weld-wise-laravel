@@ -1,7 +1,7 @@
 <?php
 use App\Models\Test;
 
-$num_tests_per_page = 6;
+$num_tests_per_page = 3;
 
 $tests = Test::query();
 

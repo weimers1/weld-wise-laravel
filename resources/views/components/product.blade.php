@@ -34,19 +34,25 @@
         <div
             class="card-body d-flex"
         >
-            <button
-                class="btn btn-ww-orange"
-                type="button"
+            <form
+                method="POST"
+                action="/test"
             >
-                <i
-                    class="bi bi-cart"
-                ></i> Add to Cart
-            </button>
-            <span
-                class="fw-bold mt-2 ms-auto"
-            >
-                ${{ number_format($price, 2, '.', ',') }}
-            </span>
+                @csrf
+                <button
+                    class="btn btn-ww-orange"
+                    type="submit"
+                >
+                    <i
+                        class="bi bi-cart"
+                    ></i> Add to Cart
+                </button>
+                <span
+                    class="fw-bold mt-2 ms-auto"
+                >
+                    ${{ number_format($price, 2, '.', ',') }}
+                </span>
+            </form>
         </div>
     </div>
 </div>
