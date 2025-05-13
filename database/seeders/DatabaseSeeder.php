@@ -26,7 +26,7 @@ class DatabaseSeeder extends Seeder
         Page::factory()->create([
             'title' => 'Tests',
             'icon' => 'bi-file-earmark-fill',
-            'link' => '/tests',
+            'link' => '/test',
         ]);
     }
 }
