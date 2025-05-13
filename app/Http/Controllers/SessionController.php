@@ -68,7 +68,10 @@ class SessionController extends Controller
         }
 
         try {
-            $this->stytch->send_magic_link($email);
+            $response = $this->stytch->send_magic_link($email);
+            if (array_key_exists('error', $response)) {
+                throw ValidationException::withMessages([$response['error']]);
+            }
         } catch (Exception $e) {
             // @TODO: send error email
 
