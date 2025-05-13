@@ -28,3 +28,7 @@ Route::post('/user/login', [SessionController::class, 'create']);
 Route::post('/user/create', [SessionController::class, 'create'], ['loggingIn' => false]);
 
 Route::get('/user/authenticate', [SessionController::class, 'authenticate']);
+
+Route::fallback(function () {
+    return view('errors.404');
+});
