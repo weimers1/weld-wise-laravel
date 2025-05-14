@@ -3,15 +3,10 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 
 class Page extends Model
 {
-    /** @use HasFactory<\Database\Factories\PageFactory> */
-    use HasFactory;
-
     /**
      * The model's default values for attributes.
      *

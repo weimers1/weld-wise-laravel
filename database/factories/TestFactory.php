@@ -3,13 +3,11 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Str;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Page>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Test>
  */
-class PageFactory extends Factory
+class TestFactory extends Factory
 {
     /**
      * The current password being used by the factory.
@@ -25,8 +23,8 @@ class PageFactory extends Factory
     {
         return [
             'title' => '',
-            'icon' => 'bi-question-square',
-            'link' => '/',
+            'description' => '',
+            'price' => 0.0,
         ];
     }
 }
