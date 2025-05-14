@@ -23,43 +23,95 @@ class Page extends Model
         'link' => '/',
     ];
 
+    protected $fillable = ['title', 'icon', 'link'];
+
     static function header()
     {
         $pages = [
-            'home',
-            'faq',
+            new Page([
+                'title' => 'Home',
+                'icon' => 'bi-house',
+                'link' => '/',
+            ]),
+            new Page([
+                'title' => 'FAQ',
+                'icon' => 'bi-question-circle',
+                'link' => '/faq',
+            ]),
         ];
 
         if (Auth::check()) {
-            array_push($pages, 'tests');
+            array_push($pages, new Page([
+                'title' => 'Tests',
+                'icon' => 'bi-file-text',
+                'link' => '/test',
+            ]));
         }
 
-        return Page::whereIn(DB::raw('LOWER(title)'), $pages)->get();
+        return $pages;
     }
 
     static function tiles()
     {
         $pages = [
-            'home',
-            'faq',
-            'tests',
+            new Page([
+                'title' => 'Home',
+                'icon' => 'bi-house',
+                'link' => '/',
+            ]),
+            new Page([
+                'title' => 'FAQ',
+                'icon' => 'bi-question-circle',
+                'link' => '/faq',
+            ]),
+            new Page([
+                'title' => 'Tests',
+                'icon' => 'bi-file-text',
+                'link' => '/test',
+            ])
         ];
 
         if (Auth::check()) {
-            array_push($pages, 'profile');
+            array_push($pages, new Page([
+                'title' => 'Profile',
+                'icon' => 'bi-person',
+                'link' => '/user/settings',
+            ]));
         }
 
-        return Page::whereIn(DB::raw('LOWER(title)'), $pages)->get();
+        return $pages;
     }
 
     static function footer()
     {
         $pages = [
-            'home',
-            'faq',
-            'tests',
+            new Page([
+                'title' => 'Home',
+                'icon' => 'bi-house',
+                'link' => '/',
+            ]),
+            new Page([
+                'title' => 'FAQ',
+                'icon' => 'bi-question-circle',
+                'link' => '/faq',
+            ]),
+            new Page([
+                'title' => 'Tests',
+                'icon' => 'bi-file-text',
+                'link' => '/test',
+            ]),
+            new Page([
+                'title' => 'Profile',
+                'icon' => 'bi-person',
+                'link' => '/user/settings',
+            ]),
+            new Page([
+                'title' => 'Log In',
+                'icon' => 'bi-box-arrow-in-right',
+                'link' => '/user/login',
+            ])
         ];
 
-        return Page::whereIn(DB::raw('LOWER(title)'), $pages)->get();
+        return $pages;
     }
 }
