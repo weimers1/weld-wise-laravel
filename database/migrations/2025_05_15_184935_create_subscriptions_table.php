@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('subscriptions', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('purchase_id')->constrained()->onDelete('cascade'); // Links to purchases table
-            $table->timestamp('current_period_start')->nullable(); // Current billing cycle start
-            $table->timestamp('current_period_end')->nullable(); // Current billing cycle end
+            $table->foreignId('purchase_id')->constrained()->onDelete('cascade');
+            $table->timestamp('current_period_start')->nullable();
+            $table->timestamp('current_period_end')->nullable();
             $table->string('status')->default('pending'); // pending, active, cancelled, suspended
             $table->timestamps();
         });
