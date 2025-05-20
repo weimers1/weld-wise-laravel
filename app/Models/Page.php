@@ -95,17 +95,21 @@ class Page extends Model
                 'icon' => 'bi-file-text',
                 'link' => '/test',
             ]),
-            new Page([
+        ];
+
+        if (Auth::check()) {
+            array_push($pages, new Page([
                 'title' => 'Profile',
                 'icon' => 'bi-person',
                 'link' => '/user/settings',
-            ]),
-            new Page([
+            ]));
+        } else {
+            array_push($pages, new Page([
                 'title' => 'Log In',
                 'icon' => 'bi-box-arrow-in-right',
                 'link' => '/user/login',
-            ])
-        ];
+            ]));
+        }
 
         return $pages;
     }
