@@ -14,7 +14,7 @@
             class="row text-black"
         >
             <div
-                class="col-12 col-md-3 d-flex justify-content-center align-items-center flex-column"
+                class="col-12 col-lg-3 d-flex justify-content-center align-items-center flex-column"
             >
                 <div
                     class="p-4 m-4 w-75 border rounded h-px-150 lg:h-px-220 position-relative bg-light-grey shadow"
@@ -32,7 +32,7 @@
                 </div>
             </div>
             <div
-                class="col-12 col-md-3 d-flex justify-content-center align-items-center flex-column"
+                class="col-12 col-lg-3 d-flex justify-content-center align-items-center flex-column"
             >
                 <div
                     class="p-4 m-4 w-75 border rounded h-px-150 lg:h-px-220 position-relative bg-light-grey shadow"
@@ -50,7 +50,7 @@
                 </div>
             </div>
             <div
-                class="col-12 col-md-3 d-flex justify-content-center align-items-center flex-column"
+                class="col-12 col-lg-3 d-flex justify-content-center align-items-center flex-column"
             >
                 <div
                     class="p-4 m-4 w-75 border rounded h-px-150 lg:h-px-220 position-relative bg-light-grey shadow"
@@ -68,7 +68,7 @@
                 </div>
             </div>
             <div
-                class="col-12 col-md-3 d-flex justify-content-center align-items-center flex-column"
+                class="col-12 col-lg-3 d-flex justify-content-center align-items-center flex-column"
             >
                 <div
                     class="p-4 m-4 w-75 border rounded h-px-150 lg:h-px-220 position-relative bg-light-grey shadow"
@@ -84,6 +84,22 @@
                         5
                     </div>
                 </div>
+            </div>
+        </div>
+        <div
+            class="row my-4"
+        >
+            <div
+                class="col col-sm-2 ms-lg-3 d-flex justify-content-center align-items-center"
+            >
+                <button
+                    class="btn btn-ww-orange shadow"
+                    type="button"
+                >
+                    <i
+                        class="bi-file-text"
+                    ></i> Attempt Test
+                </button>
             </div>
         </div>
     </div>

@@ -47,20 +47,25 @@ $pages = Page::footer();
         </div>
 
         <div
-            class="col text-nowrap mt-2 text-center text-sm-end"
+            class="col text-nowrap mt-2 text-center text-lg-end"
         >
             <div
-                class="row row-cols-1 row-cols-sm-2"
+                class="row row-cols-1 row-cols-lg-2"
             >
                 <div
-                    class="col my-2 text-white"
+                    class="col my-2 text-white d-lg-none"
                 >
                     Looking for our main website?
                 </div>
 
                 <div
-                    class="col text-center text-sm-start"
+                    class="col text-center text-lg-start"
                 >
+                    <div
+                        class="text-white d-none d-lg-inline-flex me-2"
+                    >
+                        Looking for our main website?
+                    </div>
                     <a
                         class="text-white no-underline"
                         href="https://weld-wise.com"
