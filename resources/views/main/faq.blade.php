@@ -25,7 +25,7 @@ $faqs = [
         class="container pt-3"
     >
         <h2
-            class="text-white my-4"
+            class="text-white my-4 text-shadow"
         >
             Frequently Asked Questions
         </h2>
@@ -37,10 +37,10 @@ $faqs = [
             >
                 @foreach ($faqs as $faq)
                     <div
-                        className="list-group-item shadow"
+                        className="list-group-item"
                     >
                         <div
-                            class="card mt-3"
+                            class="card mt-3 shadow"
                         >
                             <div
                                 class="card-header collapsed cursor-pointer hover-darken"

@@ -15,18 +15,35 @@ $pages = Page::tiles();
     </x-slot:includes>
 
     <div
-        class="container pt-3"
+        class="container"
     >
-        <div
-            class="row pt-4"
+        <h1
+            class="text-white mt-4 text-shadow"
         >
-            @foreach ($pages as $tile)
-                <x-tile
-                    :title="$tile['title']"
-                    :icon="$tile['icon']"
-                    :link="$tile['link']"
-                ></x-tile>
-            @endforeach
+            Weld Wise Test Practice Platform
+        </h1>
+        <h2
+            class="text-white mt-4 text-shadow"
+        >
+            Home
+        </h2>
+        <div
+            class="d-flex align-items-center justify-content-center min-vh-50"
+        >
+            <div
+                class="d-block d-md-flex justify-content-evenly w-100"
+            >
+                <div
+                    class="min-vh-20 d-md-none"
+                ></div>
+                @foreach ($pages as $tile)
+                    <x-tile
+                        :title="$tile['title']"
+                        :icon="$tile['icon']"
+                        :link="$tile['link']"
+                    ></x-tile>
+                @endforeach
+            </div>
         </div>
     </div>
 

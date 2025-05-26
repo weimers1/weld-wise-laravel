@@ -1,7 +1,10 @@
 @props(['title' => '', 'icon' => '', 'link' => ''])
 <div
-    class="col-12 col-md-4 fs-1 d-flex justify-content-center pt-4"
+    class="fs-1 d-flex justify-content-center pt-4"
 >
+    <div
+        class="min-vh-50 d-md-none"
+    ></div>
     <a
         class="text-decoration-none text-black"
         href="{{ $link }}"

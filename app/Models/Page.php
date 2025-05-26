@@ -50,20 +50,15 @@ class Page extends Model
     {
         $pages = [
             new Page([
-                'title' => 'Home',
-                'icon' => 'bi-house',
-                'link' => '/',
+                'title' => 'Tests',
+                'icon' => 'bi-file-text',
+                'link' => '/test',
             ]),
             new Page([
                 'title' => 'FAQ',
                 'icon' => 'bi-question-circle',
                 'link' => '/faq',
             ]),
-            new Page([
-                'title' => 'Tests',
-                'icon' => 'bi-file-text',
-                'link' => '/test',
-            ])
         ];
 
         if (Auth::check()) {

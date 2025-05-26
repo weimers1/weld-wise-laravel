@@ -144,17 +144,17 @@ body > * {
     background-color: #999;
 }
 
-/* custom hover class */
+/* custom hover classes */
 .hover-darken:hover {
     background-image: linear-gradient(rgb(0 0 0/10%) 0 0) !important;
 }
 
-/* custom cursor class */
+/* custom cursor classes */
 .cursor-pointer {
     cursor: pointer;
 }
 
-/* custom postion class */
+/* custom postion classes */
 .bottom-10 {
     position: absolute;
     bottom: 10px;
@@ -166,7 +166,7 @@ body > * {
     }
 }
 
-/* custom height class */
+/* custom height classes */
 .h-px-150 {
     height: 150px !important;
 }
@@ -175,4 +175,17 @@ body > * {
     .lg\:h-px-220 {
         height: 220px !important;
     }
+}
+
+.min-vh-50 {
+    min-height: 50vh;
+}
+
+.min-vh-20 {
+    min-height: 20vh;
+}
+
+/* custom text classes */
+.text-shadow {
+    text-shadow: rgba(0, 0, 0, 0.5) 0 1px 10px;
 }
