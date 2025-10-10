@@ -17,7 +17,8 @@ return new class extends Migration
             $table->string('description'); // answer description
             $table->integer('order'); // answer order
             $table->unique(['question_id', 'order']); // Ensure unique order per question
-            $table->integer('is_correct'); // whether the answer is a solution
+            $table->boolean('is_correct')->default(0);; // whether the answer is a solution
+            $table->boolean('is_deleted')->default(0);; // whether the answer is active/deleted
             $table->timestamps();
         });
     }

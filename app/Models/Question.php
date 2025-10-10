@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
@@ -21,6 +22,11 @@ class Question extends Model
     protected $primaryKey = 'id';
 
     protected $fillable = ['description', 'explanation'];
+
+    public function answers(): HasMany
+    {
+        return $this->hasMany(Answer::class)->orderBy('order');
+    }
 
     public function generateTest($amount)
     {

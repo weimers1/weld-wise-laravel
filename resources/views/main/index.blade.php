@@ -20,7 +20,7 @@ $pages = Page::tiles();
         <h1
             class="text-white mt-4 text-shadow"
         >
-            Weld Wise Test Practice Platform
+            Weld WISE Test Practice Platform
         </h1>
         <h2
             class="text-white mt-4 text-shadow"
