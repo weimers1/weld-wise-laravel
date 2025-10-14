@@ -121,6 +121,16 @@
                 </div>
             </div>
         </div>
+        @if(session('error'))
+            <div class="row my-4">
+                <div class="col-12">
+                    <div class="alert alert-danger">
+                        {{ session('error') }}
+                    </div>
+                </div>
+            </div>
+        @endif
+        
         <div
             class="row my-4"
         >
@@ -128,8 +138,8 @@
                 class="col col-sm-2 ms-lg-3 d-flex justify-content-center align-items-center"
             >
                 <form
-                    action="/user/test"
-                    method="GET"
+                    action="/test/create"
+                    method="POST"
                 >
                     @csrf
                     <button

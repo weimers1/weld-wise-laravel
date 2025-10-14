@@ -16,8 +16,9 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('token');
             $table->string('status');
-            $table->string('score');
-            $table->timestamp('submitted_at');
+            $table->string('score')->nullable();
+            $table->timestamp('expires_at');
+            $table->timestamp('submitted_at')->nullable();
             $table->timestamps();
         });
     }

@@ -26,7 +26,11 @@ Route::post('/user/login', [SessionController::class, 'create']);
 
 Route::post('/user/create', [SessionController::class, 'create'], ['loggingIn' => false]);
 
-Route::get('/user/test', [TestController::class, 'create']);
+Route::post('/test/create', [TestController::class, 'create'])->middleware('auth');
+
+Route::get('/test/take/{token}', [TestController::class, 'take'])->middleware('auth');
+
+Route::post('/test/timeout/{token}', [TestController::class, 'timeout'])->middleware('auth');
 
 Route::fallback(function () {
     return view('errors.404');
