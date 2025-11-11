@@ -15,8 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('test_token_id')->constrained()->onDelete('cascade');
             $table->foreignId('question_id')->constrained()->onDelete('cascade');
-            $table->foreignId('answer_id')->constrained()->onDelete('cascade'); // the answer the user submits; compare against real answer later
-            $table->timestamp('submitted_at');
+            $table->unsignedBigInteger('answer_id')->nullable(); // the answer the user submits; compare against real answer later
             $table->timestamps();
         });
     }

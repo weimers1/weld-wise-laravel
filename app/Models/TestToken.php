@@ -13,11 +13,13 @@ class TestToken extends Model
         'token',
         'status',
         'score',
-        'submitted_at'
+        'submitted_at',
+        'expires_at'
     ];
 
     protected $casts = [
-        'submitted_at' => 'datetime'
+        'submitted_at' => 'datetime',
+        'expires_at' => 'datetime'
     ];
 
     public function user(): BelongsTo

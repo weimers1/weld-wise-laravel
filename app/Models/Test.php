@@ -11,11 +11,6 @@ class Test extends Model
         'test_token_id',
         'question_id',
         'answer_id',
-        'submitted_at'
-    ];
-
-    protected $casts = [
-        'submitted_at' => 'datetime'
     ];
 
     public function testToken(): BelongsTo
@@ -26,10 +21,5 @@ class Test extends Model
     public function question(): BelongsTo
     {
         return $this->belongsTo(Question::class);
-    }
-
-    public function answer(): BelongsTo
-    {
-        return $this->belongsTo(Answer::class);
     }
 }

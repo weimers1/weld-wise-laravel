@@ -30,7 +30,7 @@ Route::post('/test/create', [TestController::class, 'create'])->middleware('auth
 
 Route::get('/test/take/{token}', [TestController::class, 'take'])->middleware('auth');
 
-Route::post('/test/timeout/{token}', [TestController::class, 'timeout'])->middleware('auth');
+Route::post('/test/submit/{token}', [TestController::class, 'submit'])->middleware('auth');
 
 Route::fallback(function () {
     return view('errors.404');
