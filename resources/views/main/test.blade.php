@@ -151,6 +151,7 @@
                 <form
                     action="/test/create"
                     method="POST"
+                    onsubmit="disableSubmitButton(event)"
                 >
                     @csrf
                     <button
@@ -165,5 +166,13 @@
             </div>
         </div>
     </div>
+
+    <script>
+        function disableSubmitButton(event) {
+            const button = event.target.querySelector('.submit-button') || event.submitter;
+            button.disabled = true;
+            button.textContent = 'Loading...';
+        }
+    </script>
 
 </x-layout>
