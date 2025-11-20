@@ -32,6 +32,8 @@ Route::get('/test/take/{token}', [TestController::class, 'take'])->middleware('a
 
 Route::post('/test/submit/{token}', [TestController::class, 'submit'])->middleware('auth');
 
+Route::get('/test/time/{token}', [TestController::class, 'getRemainingTime'])->middleware('auth');
+
 Route::fallback(function () {
     return view('errors.404');
 });

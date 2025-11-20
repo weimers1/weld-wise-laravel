@@ -11,6 +11,14 @@ use Illuminate\Support\Str;
 
 class TestController extends Controller
 {
+    private function getRemainingMinutes($testToken)
+    {
+        if (now()->gt($testToken->expires_at)) {
+            return 0;
+        }
+        return now()->diffInMinutes($testToken->expires_at, false);
+    }
+
     public function create(Request $request)
     {
         // Mark any existing active tests as inactive for this user
@@ -92,7 +100,7 @@ class TestController extends Controller
         )->with('answers')->get();
 
         // Calculate remaining time in minutes
-        $remainingMinutes = now()->diffInMinutes($testToken->expires_at, false);
+        $remainingMinutes = $this->getRemainingMinutes($testToken);
 
         return view('main.take-test', compact('testToken', 'questions', 'remainingMinutes'));
     }
@@ -154,6 +162,25 @@ class TestController extends Controller
         return view('main.take-test')->with('showModal', [
             'title' => 'Test Submitted!',
             'message' => "You have successfully submitted your test. Your score: {$score}%"
+        ]);
+    }
+
+    public function getRemainingTime($token)
+    {
+        $testToken = TestToken::where('token', $token)
+            ->where('user_id', Auth::id())
+            ->first();
+
+        if (!$testToken) {
+            return response()->json(['error' => 'Invalid token'], 404);
+        }
+
+        $remainingMinutes = $this->getRemainingMinutes($testToken);
+        $expired = $remainingMinutes <= 0;
+
+        return response()->json([
+            'remainingMinutes' => $remainingMinutes,
+            'expired' => $expired
         ]);
     }
 }

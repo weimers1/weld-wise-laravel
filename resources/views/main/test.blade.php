@@ -10,7 +10,7 @@
         >
             Tests
         </h2>
-        <div
+        {{-- <div
             class="row text-black"
         >
             <div
@@ -85,7 +85,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
         <div
             class="row my-4"
         >
@@ -113,29 +113,40 @@
                     <ul>
                         <li>You are allowed to use a sheet of paper and pen or pencil, and a calculator.</li>
                         <li>You are <b>not</b> allowed to use any other resources.</li>
-                        <li>If you leave the page before you have submitted your test, your score for that test will be
-                            counted as 0% and will expend one of your attempts.</li>
+                        <li>Please make sure you click the <span
+                                class="btn btn-success shadow mx-2"
+                                type="submit"
+                            >
+                                Submit Test
+                            </span> button when you have finished to ensure you receive credit for the test.</li>
+                        <li>Please do not leave the test until you have finished.</li>
                         <li>Please make sure you have a stable internet connection before attempting the test.</li>
                     </ul>
                     </p>
                 </div>
             </div>
         </div>
-        @if(session('error'))
-            <div class="row my-4">
-                <div class="col-12">
-                    <div class="alert alert-danger">
+        @if (session('error'))
+            <div
+                class="row my-4"
+            >
+                <div
+                    class="col-12"
+                >
+                    <div
+                        class="alert alert-danger"
+                    >
                         {{ session('error') }}
                     </div>
                 </div>
             </div>
         @endif
-        
+
         <div
             class="row my-4"
         >
             <div
-                class="col col-sm-2 ms-lg-3 d-flex justify-content-center align-items-center"
+                class="col col-sm-3 ms-lg-3 d-flex justify-content-start align-items-start"
             >
                 <form
                     action="/test/create"
