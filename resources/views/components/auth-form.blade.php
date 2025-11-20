@@ -43,6 +43,7 @@
                 <form
                     method="POST"
                     action="/user/login"
+                    onsubmit="disableSubmitButton(event)"
                 >
                     @csrf
                     <h5
@@ -64,7 +65,7 @@
                         >{{ $errors->first('email_log_in') }}</div>
                     @endif
                     <button
-                        class="btn btn-ww-orange mt-4"
+                        class="btn btn-ww-orange mt-4 submit-button"
                         type="submit"
                     >Log In</button>
                 </form>
@@ -76,6 +77,7 @@
                 <form
                     method="POST"
                     action="/user/create"
+                    onsubmit="disableSubmitButton(event)"
                 >
                     @csrf
                     <h5
@@ -139,14 +141,14 @@
                         type="email"
                     />
                     <button
-                        class="btn btn-ww-orange mt-4"
+                        class="btn btn-ww-orange mt-4 submit-button"
                         type="submit"
                     >Sign Up</button>
                 </form>
             </div>
         </div>
-        {{-- @TODO: get permission to use Stytch logo for disclaimer --}}
-        {{-- <div
+        {{-- use Stytch logo for disclaimer --}}
+        <div
             class="m-2 mt-4"
         >
             <span
@@ -159,6 +161,14 @@
                 src="/images/stytch.png"
                 alt="Powered by Stytch"
             />
-        </div> --}}
+        </div>
     </div>
 </div>
+
+<script>
+    function disableSubmitButton(event) {
+        const button = event.target.querySelector('.submit-button') || event.submitter;
+        button.disabled = true;
+        button.textContent = 'Loading...';
+    }
+</script>
