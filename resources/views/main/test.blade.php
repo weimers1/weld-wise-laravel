@@ -114,7 +114,7 @@
                         <li>You are allowed to use a sheet of paper and pen or pencil, and a calculator.</li>
                         <li>You are <b>not</b> allowed to use any other resources.</li>
                         <li>Please make sure you click the <span
-                                class="btn btn-success shadow mx-2"
+                                class="btn btn-success-light shadow mx-2"
                                 type="submit"
                             >
                                 Submit Test

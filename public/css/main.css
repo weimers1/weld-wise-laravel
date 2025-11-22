@@ -23,7 +23,7 @@ body > * {
     width: 105px;
 }
 
-/* custom colors */
+/* custom background colors */
 .bg-ww-dark {
     background-color: #145aa0 !important;
 }
@@ -36,15 +36,6 @@ body > * {
     background-color: #ececec !important;
 }
 
-.border-light-grey {
-    border-color: #ececec !important;
-}
-
-.text-ww-grey,
-.text-ww-grey * {
-    color: #d1d1d1 !important;
-}
-
 .bg-ww-light {
     background-color: #4491dd !important;
 }
@@ -53,6 +44,7 @@ body > * {
     background-color: #e06227 !important;
 }
 
+/* custom button colors */
 .btn-ww-dark {
     border-color: #2c6cac !important;
     color: #ffffff !important;
@@ -93,9 +85,26 @@ body > * {
     background-color: #c75520 !important;
 }
 
-.error {
-    color: #ee1c1c;
-    font-weight: bold;
+.btn-success-light {
+    border-color: #3fbb20 !important;
+    color: #ffffff !important;
+    background-color: #3fbb20 !important;
+}
+
+.btn-success-light * {
+    color: #ffffff !important;
+}
+
+.btn-success-light:hover {
+    border-color: #38a31d !important;
+    color: #ffffff;
+    background-color: #38a31d !important;
+}
+
+/* custom text colors */
+.text-ww-grey,
+.text-ww-grey * {
+    color: #d1d1d1 !important;
 }
 
 .text-navy {
@@ -104,6 +113,16 @@ body > * {
 
 .text-white-recursive * {
     color: #ffffff !important;
+}
+
+/* custom misc colors */
+.error {
+    color: #ee1c1c;
+    font-weight: bold;
+}
+
+.border-light-grey {
+    border-color: #ececec !important;
 }
 
 /* override bootstrap colors */
