@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('description'); // question description
             $table->string('explanation'); // explanation of correct answer(s)
+            $table->foreignId('category_id')->constrained()->onDelete('cascade');
             $table->boolean('is_deleted')->default(0); // flag to indicate if the question is deleted
             $table->timestamps();
         });

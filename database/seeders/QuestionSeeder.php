@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Question;
 use App\Models\Answer;
+use App\Models\Category;
 use Illuminate\Database\Seeder;
 
 class QuestionSeeder extends Seeder
@@ -14,6 +15,7 @@ class QuestionSeeder extends Seeder
             [
                 'description' => 'What is the most common welding process used in construction?',
                 'explanation' => 'SMAW (Shielded Metal Arc Welding) is widely used due to its versatility and portability.',
+                'category' => 'Industry',
                 'answers' => [
                     ['description' => 'SMAW (Stick welding)', 'is_correct' => true],
                     ['description' => 'GMAW (MIG welding)', 'is_correct' => false],
@@ -24,6 +26,7 @@ class QuestionSeeder extends Seeder
             [
                 'description' => 'What does AWS stand for in welding?',
                 'explanation' => 'AWS is the American Welding Society, which sets welding standards and certifications.',
+                'category' => 'Weld Classifications',
                 'answers' => [
                     ['description' => 'American Welding Society', 'is_correct' => true],
                     ['description' => 'Advanced Welding Systems', 'is_correct' => false],
@@ -34,6 +37,7 @@ class QuestionSeeder extends Seeder
             [
                 'description' => 'Which gas is commonly used for GTAW welding?',
                 'explanation' => 'Argon is the most common shielding gas for GTAW because it provides excellent arc stability.',
+                'category' => 'TIG',
                 'answers' => [
                     ['description' => 'Argon', 'is_correct' => true],
                     ['description' => 'Carbon Dioxide', 'is_correct' => false],
@@ -44,6 +48,7 @@ class QuestionSeeder extends Seeder
             [
                 'description' => 'What is the typical voltage range for SMAW welding?',
                 'explanation' => '20-40 volts is the standard range for most SMAW applications.',
+                'category' => 'Stick',
                 'answers' => [
                     ['description' => '20-40 volts', 'is_correct' => true],
                     ['description' => '50-70 volts', 'is_correct' => false],
@@ -54,6 +59,7 @@ class QuestionSeeder extends Seeder
             [
                 'description' => 'Which welding defect is caused by insufficient penetration?',
                 'explanation' => 'Lack of fusion occurs when the weld metal does not properly fuse with the base metal.',
+                'category' => 'General',
                 'answers' => [
                     ['description' => 'Lack of fusion', 'is_correct' => true],
                     ['description' => 'Porosity', 'is_correct' => false],
@@ -64,9 +70,12 @@ class QuestionSeeder extends Seeder
         ];
 
         foreach ($questions as $questionData) {
+            $category = Category::where('name', $questionData['category'])->first();
+            
             $question = Question::create([
                 'description' => $questionData['description'],
-                'explanation' => $questionData['explanation']
+                'explanation' => $questionData['explanation'],
+                'category_id' => $category->id
             ]);
 
             foreach ($questionData['answers'] as $index => $answerData) {
