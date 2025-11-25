@@ -125,6 +125,7 @@ body > * {
     border-color: #ececec !important;
 }
 
+/* override */
 /* override bootstrap colors */
 .form-check-input:checked {
     background-color: #145aa0 !important;
@@ -141,6 +142,11 @@ body > * {
     color: #ffffff !important;
     background-color: #e06227 !important;
     border: #e06227 !important;
+}
+
+/* override iti phone number field width */
+.iti {
+    width: 100% !important;
 }
 
 /* round scrollbar */

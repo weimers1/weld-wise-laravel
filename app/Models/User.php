@@ -21,6 +21,7 @@ class User extends Authenticatable
         'name_first',
         'name_last',
         'email',
+        'phone',
     ];
 
     /**
@@ -32,6 +33,7 @@ class User extends Authenticatable
     {
         return [
             'email_verified_at' => 'datetime',
+            'phone_verified_at' => 'datetime',
         ];
     }
 }

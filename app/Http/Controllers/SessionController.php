@@ -31,6 +31,7 @@ class SessionController extends Controller
                     'name_first' => 'required',
                     'name_last' => 'required',
                     'email_sign_up' => 'unique:users,email|email|confirmed',
+                    'phone' => 'required|regex:/^\+1\d{10}$/|size:12',
                 ],
                 [
                     'name_first' => 'First name is required.',
@@ -38,6 +39,8 @@ class SessionController extends Controller
                     'email_sign_up.unique' => 'Please use a different email address.',
                     'email_sign_up.email' => 'Please use a valid email address.',
                     'email_sign_up.confirmed' => 'Please confirm your email.',
+                    'phone.required' => 'Phone number is required.',
+                    'phone.regex' => 'Please enter a valid phone number.',
                 ]
             );
 
@@ -45,6 +48,7 @@ class SessionController extends Controller
                 'name_first' => request('name_first'),
                 'name_last' => request('name_last'),
                 'email' => request('email_sign_up'),
+                'phone' => request('phone'),
             ]);
 
             $email = $request['email_sign_up'];
