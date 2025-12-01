@@ -5,6 +5,7 @@ namespace App\Services;
 class StytchService
 {
     protected $project_id;
+
     protected $secret;
 
     public function __construct()
@@ -13,10 +14,11 @@ class StytchService
         $this->secret = env('STYTCH_SECRET');
     }
 
-    public function send_magic_link($email)
+    public function send_magic_link($email, $phone = null)
     {
         $url = 'https://test.stytch.com/v1/magic_links/email/login_or_create';
         $data = ['email' => $email];
+
         return $this->make_request($url, $data);
     }
 
@@ -24,7 +26,25 @@ class StytchService
     {
         $url = 'https://test.stytch.com/v1/magic_links/authenticate';
         $data = ['token' => $token];
+
         return $this->make_request($url, $data);
+    }
+
+    public function send_sms_otp($stytch_user_id, $phone)
+    {
+        $url = 'https://test.stytch.com/v1/otps/sms/send';
+
+        return $this->make_request($url, ['user_id' => $stytch_user_id, 'phone_number' => $phone]);
+    }
+
+    public function verify_sms_otp($phone, $code)
+    {
+        $url = 'https://test.stytch.com/v1/otps/sms/authenticate';
+
+        return $this->make_request($url, [
+            'phone_number' => $phone,
+            'code' => $code,
+        ]);
     }
 
     public function make_request($url, $data)
@@ -44,7 +64,7 @@ class StytchService
         // set header
         curl_setopt($ch, CURLOPT_HTTPHEADER, [
             'Content-Type: application/json',
-            'Authorization: Basic ' . base64_encode($this->project_id . ':' . $this->secret),
+            'Authorization: Basic '.base64_encode($this->project_id.':'.$this->secret),
         ]);
 
         // execute the cURL command

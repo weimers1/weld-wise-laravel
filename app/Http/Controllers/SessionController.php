@@ -25,7 +25,7 @@ class SessionController extends Controller
 
         $email = env('DEVELOPER_EMAIL');
 
-        if (!$loggingIn) {
+        if (! $loggingIn) {
             $request->validate(
                 [
                     'name_first' => 'required',
@@ -83,20 +83,20 @@ class SessionController extends Controller
             // let user know
             return redirect()->back()->with('modal_info', [
                 'title' => 'System Error',
-                'body' => 'A system error has occurred. Please try again later.'
+                'body' => 'A system error has occurred. Please try again later.',
             ]);
         }
 
         if ($loggingIn) {
             return redirect()->back()->with('modal_info', [
                 'title' => 'Log In Link Sent!',
-                'body' => 'A log in link has been sent to your email.'
+                'body' => 'A log in link has been sent to your email.',
             ]);
         }
 
         return redirect()->back()->with('modal_info', [
             'title' => 'Verification Link Sent!',
-            'body' => 'A verification link has been sent to your email.'
+            'body' => 'A verification link has been sent to your email.',
         ]);
     }
 
@@ -106,10 +106,10 @@ class SessionController extends Controller
         $token = $request->query('token');
 
         // verify there is a token
-        if (!$token) {
-            return redirect()->route('login')->with('modal_info', [
+        if (! $token) {
+            return redirect()->route('user.login')->with('modal_info', [
                 'title' => 'Invalid Attempt',
-                'body' => 'The login attempt could not be completed. Please try logging in again.'
+                'body' => 'The login attempt could not be completed. Please try logging in again.',
             ]);
         }
 
@@ -120,32 +120,15 @@ class SessionController extends Controller
             // @TODO: send error email
 
             // let user know
-            return redirect()->route('login')->with('modal_info', [
+            return redirect()->route('user.login')->with('modal_info', [
                 'title' => 'System Error',
-                'body' => 'A system error has occurred. Please try again later.'
+                'body' => 'A system error has occurred. Please try again later.',
             ]);
         }
 
         // if for some reason the response does not have what we need
-        if (!isset($response['status_code']) || !isset($response['user']['emails'][0]['email'])) {
+        if (! isset($response['status_code']) && ! isset($response['user']['emails'][0]['email'])) {
             abort(418);
-        }
-
-        // if response status code 200
-        if ($response['status_code'] === 200) {
-            // get the user
-            $user = User::where('email', '=', $response['user']['emails'][0]['email'])->first();
-
-            // if email not verified yet, mark it as verified now
-            if (is_null($user['email_verified_at'])) {
-                $this->verify_email($user);
-            }
-
-            // login
-            Auth::login($user);
-
-            // take them home
-            return redirect('/');
         }
 
         // unable to auth magic link
@@ -153,8 +136,54 @@ class SessionController extends Controller
             abort(401, 'Your session may have expired. Please try logging in again.');
         }
 
-        // otherwise, abort with base status code
-        abort($response['status_code']);
+        // if response status code not 200
+        if ($response['status_code'] !== 200) {
+            // abort with base status code
+            abort($response['status_code']);
+        }
+
+        // get the user
+        $user = User::where('email', '=', $response['user']['emails'][0]['email'])->first();
+
+        // if user's stytch ID not yet stored, add it
+        if (is_null($user['stytch_id'])) {
+            $user['stytch_id'] = $response['user']['user_id'];
+
+            // update user
+            $user->save();
+        }
+
+        // otherwise, handle login for user with email from magic link
+        return $this->handleLogin($user);
+    }
+
+    private function handleLogin($user)
+    {
+        // if email not verified yet, mark it as verified now
+        if (is_null($user['email_verified_at'])) {
+            $this->verify_email($user);
+        }
+
+        // if user has verified phone number, good to go
+        if (! is_null($user['phone_verified_at'])) {
+
+            // otherwise login
+            Auth::login($user);
+
+            // take them home
+            return redirect('/');
+        }
+
+        // otherwise, use stytch to send OTP to user's phone
+        $response = $this->stytch->send_sms_otp($user['stytch_id'], $user['phone']);
+
+        // if response status code not 200; abort with error code
+        if ($response['status_code'] !== 200) {
+            abort($response['status_code']);
+        }
+
+        // redirect to OTP page
+        return redirect()->route('otp', ['phone' => $user['phone']]);
     }
 
     private function verify_email(User $user)
@@ -172,11 +201,18 @@ class SessionController extends Controller
         Auth::logout();
 
         // redirect to home page
-        return redirect("/");
+        return redirect('/');
     }
 
     public function get()
     {
         return view('auth.index');
+    }
+
+    public function otp(Request $request)
+    {
+        $phone = $request->query('phone');
+
+        return view('auth.otp', compact('phone'));
     }
 }

@@ -20,6 +20,8 @@ Route::get('/user/authenticate', [SessionController::class, 'authenticate']);
 
 Route::get('/user/login', [SessionController::class, 'get']);
 
+Route::get('/otp', [SessionController::class, 'otp']);
+
 Route::get('/user/logout', [SessionController::class, 'destroy'])->middleware('auth');
 
 Route::post('/user/login', [SessionController::class, 'create']);
