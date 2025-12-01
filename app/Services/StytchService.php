@@ -37,12 +37,12 @@ class StytchService
         return $this->make_request($url, ['user_id' => $stytch_user_id, 'phone_number' => $phone]);
     }
 
-    public function verify_sms_otp($phone, $code)
+    public function verify_sms_otp($phone_id, $code)
     {
-        $url = 'https://test.stytch.com/v1/otps/sms/authenticate';
+        $url = 'https://test.stytch.com/v1/otps/authenticate';
 
         return $this->make_request($url, [
-            'phone_number' => $phone,
+            'method_id' => $phone_id,
             'code' => $code,
         ]);
     }

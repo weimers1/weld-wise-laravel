@@ -22,6 +22,8 @@ Route::get('/user/login', [SessionController::class, 'get']);
 
 Route::get('/otp', [SessionController::class, 'otp']);
 
+Route::post('/otp/verify', [SessionController::class, 'verify_phone_number']);
+
 Route::get('/user/logout', [SessionController::class, 'destroy'])->middleware('auth');
 
 Route::post('/user/login', [SessionController::class, 'create']);
@@ -34,7 +36,7 @@ Route::get('/test/take/{token}', [TestController::class, 'take'])->middleware('a
 
 Route::post('/test/submit/{token}', [TestController::class, 'submit'])->middleware('auth');
 
-Route::get('/test/time/{token}', [TestController::class, 'getRemainingTime'])->middleware('auth');
+Route::get('/test/time/{token}', [TestController::class, 'get_remaining_time'])->middleware('auth');
 
 Route::fallback(function () {
     return view('errors.404');

@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Question;
-use App\Models\TestToken;
 use App\Models\Test;
+use App\Models\TestToken;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
@@ -16,6 +16,7 @@ class TestController extends Controller
         if (now()->gt($testToken->expires_at)) {
             return 0;
         }
+
         return now()->diffInMinutes($testToken->expires_at, false);
     }
 
@@ -44,14 +45,14 @@ class TestController extends Controller
             'user_id' => Auth::id(),
             'token' => $token,
             'expires_at' => now()->addMinutes((int) env('TEST_TIME_LIMIT_MINUTES', 60)),
-            'status' => 'not started'
+            'status' => 'not started',
         ]);
 
         // Store the specific questions for this test
         foreach ($questions as $question) {
             Test::create([
                 'test_token_id' => $testToken->id,
-                'question_id' => $question->id
+                'question_id' => $question->id,
             ]);
         }
 
@@ -66,7 +67,7 @@ class TestController extends Controller
             ->where('user_id', Auth::id())
             ->first();
 
-        if (!$testToken) {
+        if (! $testToken) {
             return redirect('/test')->with('error', 'Invalid test token.');
         }
 
@@ -75,11 +76,12 @@ class TestController extends Controller
             $testToken->update([
                 'status' => 'timed out',
                 'score' => '0',
-                'submitted_at' => now()
+                'submitted_at' => now(),
             ]);
+
             return view('main.take-test')->with('showModal', [
                 'title' => 'Time Up!',
-                'message' => 'Your test time has expired.'
+                'message' => 'Your test time has expired.',
             ]);
         }
 
@@ -112,7 +114,7 @@ class TestController extends Controller
             ->where('user_id', Auth::id())
             ->first();
 
-        if (!$testToken) {
+        if (! $testToken) {
             return redirect('/test')->with('error', 'Invalid test token.');
         }
 
@@ -121,11 +123,12 @@ class TestController extends Controller
             $testToken->update([
                 'status' => 'timed out',
                 'score' => '0',
-                'submitted_at' => now()
+                'submitted_at' => now(),
             ]);
+
             return view('main.take-test')->with('showModal', [
                 'title' => 'Time Up!',
-                'message' => 'Your test time has expired.'
+                'message' => 'Your test time has expired.',
             ]);
         }
 
@@ -156,22 +159,22 @@ class TestController extends Controller
         $testToken->update([
             'status' => 'submitted',
             'score' => $score,
-            'submitted_at' => now()
+            'submitted_at' => now(),
         ]);
 
         return view('main.take-test')->with('showModal', [
             'title' => 'Test Submitted!',
-            'message' => "You have successfully submitted your test. Your score: {$score}%"
+            'message' => "You have successfully submitted your test. Your score: {$score}%",
         ]);
     }
 
-    public function getRemainingTime($token)
+    public function get_remaining_time($token)
     {
         $testToken = TestToken::where('token', $token)
             ->where('user_id', Auth::id())
             ->first();
 
-        if (!$testToken) {
+        if (! $testToken) {
             return response()->json(['error' => 'Invalid token'], 404);
         }
 
@@ -180,7 +183,7 @@ class TestController extends Controller
 
         return response()->json([
             'remainingMinutes' => $remainingMinutes,
-            'expired' => $expired
+            'expired' => $expired,
         ]);
     }
 }

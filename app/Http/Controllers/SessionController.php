@@ -107,7 +107,7 @@ class SessionController extends Controller
 
         // verify there is a token
         if (! $token) {
-            return redirect()->route('user.login')->with('modal_info', [
+            return redirect()->to('/user/login')->with('modal_info', [
                 'title' => 'Invalid Attempt',
                 'body' => 'The login attempt could not be completed. Please try logging in again.',
             ]);
@@ -120,7 +120,7 @@ class SessionController extends Controller
             // @TODO: send error email
 
             // let user know
-            return redirect()->route('user.login')->with('modal_info', [
+            return redirect()->to('/user/login')->with('modal_info', [
                 'title' => 'System Error',
                 'body' => 'A system error has occurred. Please try again later.',
             ]);
@@ -183,7 +183,7 @@ class SessionController extends Controller
         }
 
         // redirect to OTP page
-        return redirect()->route('otp', ['phone' => $user['phone']]);
+        return redirect()->to('/otp')->with(['phone' => $user['phone'], 'phone_id' => $response['phone_id']]);
     }
 
     private function verify_email(User $user)
@@ -211,8 +211,41 @@ class SessionController extends Controller
 
     public function otp(Request $request)
     {
-        $phone = $request->query('phone');
+        $phone = session('phone');
+        $phone_id = session('phone_id');
 
-        return view('auth.otp', compact('phone'));
+        // if phone or phone_id not provided, abort
+        if (! $phone || ! $phone_id) {
+            abort(418);
+        }
+
+        return view('auth.otp', compact(['phone', 'phone_id']));
+    }
+
+    public function verify_phone_number(Request $request)
+    {
+        // grab the needed info to verify
+        $phone_id = request('phone_id');
+        $otp_code = request('otp_code');
+
+        // attempt to verify
+        $response = $this->stytch->verify_sms_otp($phone_id, $otp_code);
+
+        // if something went wrong, abort
+        if ($response['status_code'] !== 200) {
+            abort($response['status_code']);
+        }
+
+        $user = User::where('email', '=', $response['user']['emails'][0]['email'])->first();
+
+        // update the user's phone number as verified
+        $user['phone_verified_at'] = now();
+        $user->save();
+
+        // nothing went wrong yet so log the user in
+        Auth::login($user);
+
+        // send them to the home page
+        return redirect('/');
     }
 }

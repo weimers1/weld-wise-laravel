@@ -37,8 +37,8 @@
                             @csrf
                             <input
                                 type="hidden"
-                                name="phone"
-                                value="{{ $phone }}"
+                                name="phone_id"
+                                value="{{ $phone_id }}"
                             />
                             <label
                                 for="otp-code"
