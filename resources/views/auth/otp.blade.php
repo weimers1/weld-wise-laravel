@@ -50,6 +50,8 @@
                                 type="text"
                                 maxlength="6"
                                 placeholder="Enter 6-digit code"
+                                pattern="[0-9]{6}"
+                                inputmode="numeric"
                                 required
                             />
                             @if ($errors->has('otp_code'))
@@ -67,5 +69,11 @@
             </div>
         </div>
     </div>
+
+    <script>
+        document.getElementById('otp-code').addEventListener('input', function(e) {
+            e.target.value = e.target.value.replace(/[^0-9]/g, '').slice(0, 6);
+        });
+    </script>
 
 </x-layout>

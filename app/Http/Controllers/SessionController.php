@@ -183,7 +183,7 @@ class SessionController extends Controller
         }
 
         // redirect to OTP page
-        return redirect()->to('/otp')->with(['phone' => $user['phone'], 'phone_id' => $response['phone_id']]);
+        return redirect('/otp?phone=' . urlencode($user['phone']) . '&phone_id=' . $response['phone_id']);
     }
 
     private function verify_email(User $user)
@@ -211,8 +211,8 @@ class SessionController extends Controller
 
     public function otp(Request $request)
     {
-        $phone = session('phone');
-        $phone_id = session('phone_id');
+        $phone = $request->query('phone');
+        $phone_id = $request->query('phone_id');
 
         // if phone or phone_id not provided, abort
         if (! $phone || ! $phone_id) {
@@ -224,6 +224,14 @@ class SessionController extends Controller
 
     public function verify_phone_number(Request $request)
     {
+        $request->validate([
+            'otp_code' => 'required|digits:6',
+            'phone_id' => 'required',
+        ], [
+            'otp_code.required' => 'Verification code is required.',
+            'otp_code.digits' => 'Verification code must be exactly 6 digits.',
+        ]);
+
         // grab the needed info to verify
         $phone_id = request('phone_id');
         $otp_code = request('otp_code');
