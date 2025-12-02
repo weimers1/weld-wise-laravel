@@ -142,7 +142,7 @@
                             value="{{ old('phone') }}"
                         />
                         @if ($errors->has('phone'))
-                            <div class="error">{{ $errors->first('phone') }}</div>
+                            <div class="error">{!! $errors->first('phone') !!}</div>
                         @endif
                     </div>
                     <button

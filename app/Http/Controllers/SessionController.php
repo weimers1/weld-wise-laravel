@@ -41,7 +41,7 @@ class SessionController extends Controller
                     'email_sign_up.confirmed' => 'Please confirm your email.',
                     'phone.required' => 'Phone number is required.',
                     'phone.regex' => 'Please enter a valid phone number.',
-                    'phone.unique' => 'This phone number has already been used. Please contact support (support@weld-wise.com) if you believe this is an error.',
+                    'phone.unique' => 'This phone number has already been used. Please contact support (<a href="mailto:'.env('SUPPORT_EMAIL').'">'.env('SUPPORT_EMAIL').'</a>) if you believe this is an error.',
                 ]
             );
 

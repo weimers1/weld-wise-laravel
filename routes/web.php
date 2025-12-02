@@ -38,6 +38,10 @@ Route::post('/test/submit/{token}', [TestController::class, 'submit'])->middlewa
 
 Route::get('/test/time/{token}', [TestController::class, 'get_remaining_time'])->middleware('auth');
 
+Route::get('/error/{code}', function ($code) {
+    abort($code);
+});
+
 Route::fallback(function () {
     return view('errors.404');
 });
