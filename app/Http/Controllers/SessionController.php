@@ -31,7 +31,7 @@ class SessionController extends Controller
                     'name_first' => 'required',
                     'name_last' => 'required',
                     'email_sign_up' => 'unique:users,email|email|confirmed',
-                    'phone' => 'required|regex:/^\+1\d{10}$/|size:12',
+                    'phone' => 'required|regex:/^\+1\d{10}$/|size:12|unique:users,phone',
                 ],
                 [
                     'name_first' => 'First name is required.',
@@ -41,6 +41,7 @@ class SessionController extends Controller
                     'email_sign_up.confirmed' => 'Please confirm your email.',
                     'phone.required' => 'Phone number is required.',
                     'phone.regex' => 'Please enter a valid phone number.',
+                    'phone.unique' => 'This phone number has already been used. Please contact support (support@weld-wise.com) if you believe this is an error.',
                 ]
             );
 
@@ -183,7 +184,7 @@ class SessionController extends Controller
         }
 
         // redirect to OTP page
-        return redirect('/otp?phone=' . urlencode($user['phone']) . '&phone_id=' . $response['phone_id']);
+        return redirect('/otp?phone='.urlencode($user['phone']).'&phone_id='.$response['phone_id']);
     }
 
     private function verify_email(User $user)

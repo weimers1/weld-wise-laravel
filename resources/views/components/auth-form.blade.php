@@ -3,10 +3,16 @@
 ])
 <div class="card p-4 shadow">
     <div class="card-body">
+        @if ($errors->any())
+            <div class="alert alert-danger d-flex align-items-center mb-4" role="alert">
+                <i class="bi bi-exclamation-triangle-fill me-2"></i>
+                <div>Please correct the errors.</div>
+            </div>
+        @endif
         <ul class="nav nav-pills nav-justified pb-4">
             <li class="nav-item">
                 <a
-                    class="nav-link {{ $errors->has('email_sign_up') ? '' : 'active' }} cursor-pointer"
+                    class="nav-link {{ $errors->hasAny(['name_first', 'name_last', 'email_sign_up', 'phone']) ? '' : 'active' }} cursor-pointer"
                     data-bs-toggle="pill"
                     data-bs-target="#log-in-tab"
                 >
@@ -15,7 +21,7 @@
             </li>
             <li class="nav-item">
                 <a
-                    class="nav-link {{ $errors->has('email_sign_up') ? 'active' : '' }} cursor-pointer"
+                    class="nav-link {{ $errors->hasAny(['name_first', 'name_last', 'email_sign_up', 'phone']) ? 'active' : '' }} cursor-pointer"
                     data-bs-toggle="pill"
                     data-bs-target="#sign-up-tab"
                 >
@@ -25,7 +31,7 @@
         </ul>
         <div class="tab-content">
             <div
-                class="tab-pane {{ $errors->has('email_sign_up') ? '' : 'active show' }}"
+                class="tab-pane {{ $errors->hasAny(['name_first', 'name_last', 'email_sign_up', 'phone']) ? '' : 'active show' }}"
                 id="log-in-tab"
             >
                 <form
@@ -53,7 +59,7 @@
                 </form>
             </div>
             <div
-                class="tab-pane {{ $errors->has('email_sign_up') ? 'active show' : '' }}"
+                class="tab-pane {{ $errors->hasAny(['name_first', 'name_last', 'email_sign_up', 'phone']) ? 'active show' : '' }}"
                 id="sign-up-tab"
             >
                 <form
