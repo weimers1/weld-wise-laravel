@@ -87,7 +87,7 @@ class TestController extends Controller
 
         // Check if test is still accessible (not completed, failed, or timed out)
         if (in_array($testToken->status, ['submitted', 'timed out', 'abandoned'])) {
-            return redirect('/test')->with('error', 'That test is no longer accessible. Please begin a new one.');
+            return redirect('/test')->with('error', 'That test is no longer accessible.');
         }
 
         // Mark test as in progress if it was 'not started'
@@ -134,7 +134,7 @@ class TestController extends Controller
 
         // Check if test is still accessible (not completed, failed, or timed out)
         if (in_array($testToken->status, ['submitted', 'timed out', 'abandoned'])) {
-            return redirect('/test')->with('error', 'That test is no longer accessible. Please begin a new one.');
+            return redirect('/test')->with('error', 'That test is no longer accessible.');
         }
 
         // Save user answers and calculate score
