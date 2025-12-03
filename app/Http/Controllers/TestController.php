@@ -87,7 +87,7 @@ class TestController extends Controller
 
         // Check if test is still accessible (not completed, failed, or timed out)
         if (in_array($testToken->status, ['submitted', 'timed out', 'abandoned'])) {
-            return redirect('/test')->with('error', 'This test is no longer accessible.');
+            return redirect('/test')->with('error', 'That test is no longer accessible. Please begin a new one.');
         }
 
         // Mark test as in progress if it was 'not started'
@@ -130,6 +130,11 @@ class TestController extends Controller
                 'title' => 'Time Up!',
                 'message' => 'Your test time has expired.',
             ]);
+        }
+
+        // Check if test is still accessible (not completed, failed, or timed out)
+        if (in_array($testToken->status, ['submitted', 'timed out', 'abandoned'])) {
+            return redirect('/test')->with('error', 'That test is no longer accessible. Please begin a new one.');
         }
 
         // Save user answers and calculate score
@@ -179,7 +184,8 @@ class TestController extends Controller
         }
 
         $remainingMinutes = $this->getRemainingMinutes($testToken);
-        $expired = $remainingMinutes <= 0;
+        // a test is expired if the remaining time is up or if the test status is not 'in progress'
+        $expired = $remainingMinutes <= 0 || $testToken->status !== 'in progress';
 
         return response()->json([
             'remainingMinutes' => $remainingMinutes,

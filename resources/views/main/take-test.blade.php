@@ -103,13 +103,21 @@
         </div>
 
         <x-modal
-            id="timeUpModal"
-            title="Time Up!"
+            id="testExpiredModal"
+            title="Expired"
         >
-            Your test time has expired.
+            This test has expired.
         </x-modal>
 
         <script>
+            // Initialize expired modal but don't show it immediately
+            var expiredModal = new bootstrap.Modal(document.getElementById('testExpiredModal'));
+            
+            // Redirect to /test when modal is closed
+            document.getElementById('testExpiredModal').addEventListener('hidden.bs.modal', function() {
+                window.location.href = '/test';
+            });
+
             // Visual timer functionality
             let remainingMinutes = {{ $remainingMinutes }};
             let timeInSeconds = Math.floor(remainingMinutes * 60);
@@ -128,13 +136,7 @@
                     timer.innerHTML = '00:00';
                     clearInterval(countdown);
                     // Show modal when time is up
-                    var modal = new bootstrap.Modal(document.getElementById('timeUpModal'));
-                    modal.show();
-
-                    // Redirect when modal is closed
-                    document.getElementById('timeUpModal').addEventListener('hidden.bs.modal', function() {
-                        window.location.href = '/test';
-                    });
+                    expiredModal.show();
                 }
                 timeInSeconds--;
             }, 1000);
@@ -150,8 +152,7 @@
                         if (data.expired) {
                             timer.innerHTML = '00:00';
                             clearInterval(countdown);
-                            var modal = new bootstrap.Modal(document.getElementById('timeUpModal'));
-                            modal.show();
+                            expiredModal.show();
                         } else {
                             // Update timer with fresh data
                             remainingMinutes = data.remainingMinutes;
