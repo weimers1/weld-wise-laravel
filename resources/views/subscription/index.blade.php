@@ -110,7 +110,7 @@
                                     >
                                         <span
                                             class="display-4 fw-bold"
-                                        >$29</span>
+                                        >$34.99</span>
                                         <span
                                             class="text-muted ms-2"
                                         >/month</span>
@@ -125,29 +125,40 @@
                                 >
                                     <li
                                         class="mb-2"
-                                    ><i
+                                    >
+                                        <i
                                             class="bi bi-check-circle-fill text-success me-2"
-                                        ></i>Unlimited practice tests</li>
+                                        >
+                                        </i>
+                                        Unlimited practice tests
+                                    </li>
                                     <li
                                         class="mb-2"
-                                    ><i
+                                    >
+                                        <i
                                             class="bi bi-check-circle-fill text-success me-2"
-                                        ></i>Detailed explanations</li>
+                                        >
+                                        </i>
+                                        Detailed explanations
+                                    </li>
                                     <li
                                         class="mb-2"
-                                    ><i
+                                    >
+                                        <i
                                             class="bi bi-check-circle-fill text-success me-2"
-                                        ></i>Progress tracking</li>
+                                        >
+                                        </i>
+                                        Progress tracking
+                                    </li>
                                     <li
                                         class="mb-2"
-                                    ><i
+                                    >
+                                        <i
                                             class="bi bi-check-circle-fill text-success me-2"
-                                        ></i>Mobile access</li>
-                                    <li
-                                        class="mb-2"
-                                    ><i
-                                            class="bi bi-check-circle-fill text-success me-2"
-                                        ></i>Priority support</li>
+                                        >
+                                        </i>
+                                        Priority support
+                                    </li>
                                 </ul>
 
                                 <!-- Add your PayPal subscription button code here -->
