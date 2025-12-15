@@ -44,6 +44,10 @@ body > * {
     background-color: #e06227 !important;
 }
 
+.bg-ww-orange-gradient {
+    background: linear-gradient(135deg, #f0cebe 0%, #d84e0e 75%);
+}
+
 /* custom button colors */
 .btn-ww-dark {
     border-color: #2c6cac !important;
@@ -113,6 +117,13 @@ body > * {
 
 .text-white-recursive * {
     color: #ffffff !important;
+}
+
+.text-ww-orange-gradient {
+    background: linear-gradient(135deg, #f0cebe, #d84e0e);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 /* custom misc colors */

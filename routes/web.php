@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\SessionController;
+use App\Http\Controllers\SubscriptionController;
 use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Route;
 
@@ -15,6 +16,8 @@ Route::get('/faq', function () {
 Route::get('/test', function () {
     return view('main.test');
 })->middleware('auth');
+
+Route::get('/subscribe', [SubscriptionController::class, 'index'])->middleware('auth');
 
 Route::get('/user/authenticate', [SessionController::class, 'authenticate']);
 
