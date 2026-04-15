@@ -17,7 +17,9 @@ Route::get('/test', function () {
     return view('main.test');
 })->middleware('auth');
 
-Route::get('/subscribe', [SubscriptionController::class, 'index'])->middleware('auth');
+Route::get('/subscribe', [SubscriptionController::class, 'get'])->middleware('auth');
+
+Route::post('/subscription/{subscription_id}', [SubscriptionController::class, 'create'])->middleware('auth');
 
 Route::get('/user/authenticate', [SessionController::class, 'authenticate']);
 
