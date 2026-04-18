@@ -41,7 +41,7 @@ class SessionController extends Controller
                     'email_sign_up.confirmed' => 'Please confirm your email.',
                     'phone.required' => 'Phone number is required.',
                     'phone.regex' => 'Please enter a valid phone number.',
-                    'phone.unique' => 'This phone number has already been used. Please contact support (<a href="mailto:'.env('SUPPORT_EMAIL').'">'.env('SUPPORT_EMAIL').'</a>) if you believe this is an error.',
+                    'phone.unique' => 'This phone number has already been used. Please contact support (<a href="mailto:' . env('SUPPORT_EMAIL') . '">' . env('SUPPORT_EMAIL') . '</a>) if you believe this is an error.',
                 ]
             );
 
@@ -82,20 +82,20 @@ class SessionController extends Controller
             // @TODO: send error email
 
             // let user know
-            return redirect()->back()->with('modal_info', [
+            return redirect()->back()->with('showModal', [
                 'title' => 'System Error',
                 'body' => 'A system error has occurred. Please try again later.',
             ]);
         }
 
         if ($loggingIn) {
-            return redirect()->back()->with('modal_info', [
+            return redirect()->back()->with('showModal', [
                 'title' => 'Log In Link Sent!',
                 'body' => 'A log in link has been sent to your email.',
             ]);
         }
 
-        return redirect()->back()->with('modal_info', [
+        return redirect()->back()->with('showModal', [
             'title' => 'Verification Link Sent!',
             'body' => 'A verification link has been sent to your email.',
         ]);
@@ -108,7 +108,7 @@ class SessionController extends Controller
 
         // verify there is a token
         if (! $token) {
-            return redirect()->to('/user/login')->with('modal_info', [
+            return redirect()->to('/user/login')->with('showModal', [
                 'title' => 'Invalid Attempt',
                 'body' => 'The login attempt could not be completed. Please try logging in again.',
             ]);
@@ -121,7 +121,7 @@ class SessionController extends Controller
             // @TODO: send error email
 
             // let user know
-            return redirect()->to('/user/login')->with('modal_info', [
+            return redirect()->to('/user/login')->with('showModal', [
                 'title' => 'System Error',
                 'body' => 'A system error has occurred. Please try again later.',
             ]);
@@ -184,7 +184,7 @@ class SessionController extends Controller
         }
 
         // redirect to OTP page
-        return redirect('/otp?phone='.urlencode($user['phone']).'&phone_id='.$response['phone_id']);
+        return redirect('/otp?phone=' . urlencode($user['phone']) . '&phone_id=' . $response['phone_id']);
     }
 
     private function verify_email(User $user)

@@ -6,7 +6,7 @@
             id="testModal"
             title="{{ $showModal['title'] }}"
         >
-            {{ $showModal['message'] }}
+            {{ $showModal['body'] }}
         </x-modal>
         <script>
             document.addEventListener('DOMContentLoaded', function() {
@@ -112,7 +112,7 @@
         <script>
             // Initialize expired modal but don't show it immediately
             var expiredModal = new bootstrap.Modal(document.getElementById('testExpiredModal'));
-            
+
             // Redirect to /test when modal is closed
             document.getElementById('testExpiredModal').addEventListener('hidden.bs.modal', function() {
                 window.location.href = '/test';

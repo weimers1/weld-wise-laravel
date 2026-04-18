@@ -25,12 +25,12 @@
         </div>
     </div>
 
-    @if (session('modal_info'))
+    @if (session('showModal'))
         {{-- If modal info is being passed, show the modal --}}
         <x-modal
             id="modal"
-            title="{{ session('modal_info')['title'] }}"
-        >{{ session('modal_info')['body'] }}</x-modal>
+            title="{{ session('showModal')['title'] }}"
+        >{{ session('showModal')['body'] }}</x-modal>
 
         <script>
             window.addEventListener('DOMContentLoaded', () => {

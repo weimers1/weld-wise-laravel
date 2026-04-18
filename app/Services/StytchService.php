@@ -72,7 +72,7 @@ class StytchService
         // set header
         curl_setopt($ch, CURLOPT_HTTPHEADER, [
             'Content-Type: application/json',
-            'Authorization: Basic '.base64_encode($this->project_id.':'.$this->secret),
+            'Authorization: Basic ' . base64_encode($this->project_id . ':' . $this->secret),
         ]);
 
         // execute the cURL command
@@ -82,9 +82,6 @@ class StytchService
         if (curl_errno($ch)) {
             return ['error' => curl_error($ch)];
         }
-
-        // close the session
-        curl_close($ch);
 
         // return the response as an associative array
         return json_decode($response, true);

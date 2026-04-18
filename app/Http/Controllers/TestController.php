@@ -81,7 +81,7 @@ class TestController extends Controller
 
             return view('main.take-test')->with('showModal', [
                 'title' => 'Time Up!',
-                'message' => 'Your test time has expired.',
+                'body' => 'Your test time has expired.',
             ]);
         }
 
@@ -128,7 +128,7 @@ class TestController extends Controller
 
             return view('main.take-test')->with('showModal', [
                 'title' => 'Time Up!',
-                'message' => 'Your test time has expired.',
+                'body' => 'Your test time has expired.',
             ]);
         }
 
@@ -169,7 +169,7 @@ class TestController extends Controller
 
         return view('main.take-test')->with('showModal', [
             'title' => 'Test Submitted!',
-            'message' => "You have successfully submitted your test. Your score: {$score}%",
+            'body' => "You have successfully submitted your test. Your score: {$score}%",
         ]);
     }
 

@@ -37,13 +37,18 @@ class PayPalService
         ]);
 
         $response = json_decode(curl_exec($ch), true);
-        curl_close($ch);
 
         return $response['access_token'] ?? null;
     }
 
     public function make_request($method, $endpoint, $data = [])
     {
+        // example:
+        /* curl -v -X GET https://api-m.sandbox.paypal.com/v1/billing/subscriptions/I-BW452GLLEP1G \
+         * -H 'Authorization: Bearer access_token6V7rbVwmlM1gFZKW_8QtzWXqpcwQ6T5vhEGYNJDAAdn3paCgRpdeMdVYmWzgbKSsECednupJ3Zx5Xd-g' \
+         * -H 'Content-Type: application/json' \
+         * -H 'Accept: application/json'
+         */
         $access_token = $this->get_access_token();
 
         $ch = curl_init($this->base_url . $endpoint);
@@ -71,8 +76,6 @@ class PayPalService
         if (curl_errno($ch)) {
             return ['error' => curl_error($ch)];
         }
-
-        curl_close($ch);
 
         return json_decode($response, true);
     }

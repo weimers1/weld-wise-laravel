@@ -184,7 +184,7 @@
                                             });
                                         },
                                         onApprove: function(data, actions) {
-                                            alert(data.subscriptionID); // You can add optional success message for the subscriber here
+                                            
                                         }
                                     }).render('#paypal-button-container-P-9X757929G4151125HNE7YGOI'); // Renders the PayPal button
                                 </script>
@@ -229,4 +229,18 @@
             </div>
         </div>
     </div>
+
+    @if (session('showModal'))
+        <x-modal
+            id="subscriptionModal"
+            title="{{ session('showModal')['title'] }}"
+        >{{ session('showModal')['body'] }}</x-modal>
+
+        <script>
+            window.addEventListener('DOMContentLoaded', () => {
+                const modal = new bootstrap.Modal(document.getElementById('modal'));
+                modal.show();
+            });
+        </script>
+    @endif
 </x-layout>

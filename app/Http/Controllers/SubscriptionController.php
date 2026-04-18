@@ -26,19 +26,19 @@ class SubscriptionController extends Controller
     public function create(Request $request, $subscription_id)
     {
         // confirm with PayPal whether the subscription is legit using the curl command
-        /* curl -v -X GET https://api-m.sandbox.paypal.com/v1/billing/subscriptions/I-BW452GLLEP1G \
-         * -H 'Authorization: Bearer access_token6V7rbVwmlM1gFZKW_8QtzWXqpcwQ6T5vhEGYNJDAAdn3paCgRpdeMdVYmWzgbKSsECednupJ3Zx5Xd-g' \
-         * -H 'Content-Type: application/json' \
-         * -H 'Accept: application/json'
-         */
         $subscription = $this->paypal->get_subscription($subscription_id);
 
         // check whether subscription is invalid or inactive
         if ($subscription['status'] !== $this->status['active']) {
-            // redirect to subscription page
-            return redirect()->route('subscription.get');
+            return redirect()->route('subscription.get')->with('showModal', [
+                'title' => 'Subscription Invalid',
+                'body' => 'The subscription is invalid. Please try again.',
+            ]);
         }
 
-        return view('subscription.index');
+        return view('subscription.index')->with('showModal', [
+            'title' => 'Unlimited Access Granted!',
+            'body' => 'Subscription was successful.',
+        ]);
     }
 }
