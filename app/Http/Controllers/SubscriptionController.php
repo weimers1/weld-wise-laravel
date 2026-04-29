@@ -2,16 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Purchase;
 use App\Services\PayPalService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class SubscriptionController extends Controller
 {
     protected $paypal;
-
-    protected $status = [
-        'active' => 'ACTIVE',
-    ];
 
     public function __construct(PayPalService $paypal)
     {
@@ -20,25 +18,72 @@ class SubscriptionController extends Controller
 
     public function get()
     {
-        return view('subscription.index');
+        $token = Str::random(64);
+
+        auth()->user()->purchases()->create([
+            'tier'              => 2,
+            'payment_type'      => 'recurring',
+            'paypal_identifier' => $token,
+            'status'            => 'pending',
+        ]);
+
+        return view('subscription.index', ['custom_id' => $token]);
     }
 
-    public function create(Request $request, $subscription_id)
+    public function pending()
     {
-        // confirm with PayPal whether the subscription is legit using the curl command
-        $subscription = $this->paypal->get_subscription($subscription_id);
+        return view('subscription.pending');
+    }
 
-        // check whether subscription is invalid or inactive
-        if ($subscription['status'] !== $this->status['active']) {
-            return redirect()->route('subscription.get')->with('showModal', [
-                'title' => 'Subscription Invalid',
-                'body' => 'The subscription is invalid. Please try again.',
-            ]);
+    public function webhook(Request $request)
+    {
+        $verified = $this->paypal->verify_webhook_signature(
+            $request->header('PAYPAL-TRANSMISSION-ID'),
+            $request->header('PAYPAL-TRANSMISSION-TIME'),
+            $request->header('PAYPAL-CERT-URL'),
+            $request->header('PAYPAL-AUTH-ALGO'),
+            $request->header('PAYPAL-TRANSMISSION-SIG'),
+            env('PAYPAL_WEBHOOK_ID'),
+            $request->getContent()
+        );
+
+        if (!$verified) {
+            return response()->json(['error' => 'Invalid signature'], 401);
         }
 
-        return view('subscription.index')->with('showModal', [
-            'title' => 'Unlimited Access Granted!',
-            'body' => 'Subscription was successful.',
+        $payload = $request->json()->all();
+
+        if (($payload['event_type'] ?? '') !== 'BILLING.SUBSCRIPTION.ACTIVATED') {
+            return response()->json(['status' => 'ignored'], 200);
+        }
+
+        $resource  = $payload['resource'];
+        $custom_id = $resource['custom_id'] ?? null;
+        $sub_id    = $resource['id'];
+        $plan_id   = $resource['plan_id'];
+        $start     = $resource['billing_info']['last_payment']['time'] ?? now();
+        $next      = $resource['billing_info']['next_billing_time'] ?? null;
+
+        $purchase = Purchase::where('paypal_identifier', $custom_id)
+            ->where('status', 'pending')
+            ->first();
+
+        if (!$purchase) {
+            return response()->json(['error' => 'Purchase not found'], 404);
+        }
+
+        $purchase->update([
+            'paypal_identifier' => $sub_id,
+            'paypal_reference'  => $plan_id,
+            'status'            => 'active',
         ]);
+
+        $purchase->subscription()->create([
+            'current_period_start' => $start,
+            'current_period_end'   => $next,
+            'status'               => 'active',
+        ]);
+
+        return response()->json(['status' => 'ok'], 200);
     }
 }

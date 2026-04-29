@@ -163,10 +163,10 @@
 
                                 <!-- Add your PayPal subscription button code here -->
                                 <div
-                                    id="paypal-button-container-P-9X757929G4151125HNE7YGOI"
+                                    id="paypal-button-container-{{ config('services.paypal.container_id') }}"
                                 ></div>
                                 <script
-                                    src="https://www.paypal.com/sdk/js?client-id=AeCRzW5Omj3a0gCY-Ih2fJE8G0bY7aOzyTMBleNCzT2AzDLufpjbsuRZjP95lrjbJe9tbaKYyflKv3mu&vault=true&intent=subscription"
+                                    src="https://www.paypal.com/sdk/js?client-id={{ config('services.paypal.client_id') }}&vault=true&intent=subscription"
                                     data-sdk-integration-source="button-factory"
                                 ></script>
                                 <script>
@@ -179,14 +179,14 @@
                                         },
                                         createSubscription: function(data, actions) {
                                             return actions.subscription.create({
-                                                /* Creates the subscription */
-                                                plan_id: 'P-9X757929G4151125HNE7YGOI'
+                                                plan_id: '{{ config('services.paypal.container_id') }}',
+                                                custom_id: '{{ $custom_id }}'
                                             });
                                         },
                                         onApprove: function(data, actions) {
-                                            
+                                            window.location.href = '/subscribe/pending';
                                         }
-                                    }).render('#paypal-button-container-P-9X757929G4151125HNE7YGOI'); // Renders the PayPal button
+                                    }).render('#paypal-button-container-{{ config('services.paypal.container_id') }}'); // Renders the PayPal button
                                 </script>
 
                                 <div
@@ -230,17 +230,4 @@
         </div>
     </div>
 
-    @if (session('showModal'))
-        <x-modal
-            id="subscriptionModal"
-            title="{{ session('showModal')['title'] }}"
-        >{{ session('showModal')['body'] }}</x-modal>
-
-        <script>
-            window.addEventListener('DOMContentLoaded', () => {
-                const modal = new bootstrap.Modal(document.getElementById('modal'));
-                modal.show();
-            });
-        </script>
-    @endif
 </x-layout>

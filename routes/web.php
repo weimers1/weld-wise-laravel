@@ -19,7 +19,9 @@ Route::get('/test', function () {
 
 Route::get('/subscribe', [SubscriptionController::class, 'get'])->middleware('auth');
 
-Route::post('/subscription/{subscription_id}', [SubscriptionController::class, 'create'])->middleware('auth');
+Route::get('/subscribe/pending', [SubscriptionController::class, 'pending'])->middleware('auth');
+
+Route::post('/paypal/webhook', [SubscriptionController::class, 'webhook']);
 
 Route::get('/user/authenticate', [SessionController::class, 'authenticate']);
 

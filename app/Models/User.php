@@ -30,6 +30,11 @@ class User extends Authenticatable
      *
      * @return array<string, string>
      */
+    public function purchases()
+    {
+        return $this->hasMany(Purchase::class);
+    }
+
     protected function casts(): array
     {
         return [
