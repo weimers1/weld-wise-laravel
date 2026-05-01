@@ -178,10 +178,18 @@
                                             label: 'subscribe'
                                         },
                                         createSubscription: function(data, actions) {
-                                            return actions.subscription.create({
+                                            return fetch('/subscribe/initiate', {
+                                                method: 'POST',
+                                                headers: {
+                                                    'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                                                    'Content-Type': 'application/json',
+                                                },
+                                            })
+                                            .then(res => res.json())
+                                            .then(data => actions.subscription.create({
                                                 plan_id: '{{ config('services.paypal.container_id') }}',
-                                                custom_id: '{{ $custom_id }}'
-                                            });
+                                                custom_id: data.custom_id
+                                            }));
                                         },
                                         onApprove: function(data, actions) {
                                             window.location.href = '/subscribe/pending';

@@ -18,6 +18,11 @@ class SubscriptionController extends Controller
 
     public function get()
     {
+        return view('subscription.index');
+    }
+
+    public function initiate(Request $request)
+    {
         $token = Str::random(64);
 
         auth()->user()->purchases()->create([
@@ -27,7 +32,7 @@ class SubscriptionController extends Controller
             'status'            => 'pending',
         ]);
 
-        return view('subscription.index', ['custom_id' => $token]);
+        return response()->json(['custom_id' => $token]);
     }
 
     public function pending()
