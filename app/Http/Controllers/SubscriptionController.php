@@ -26,7 +26,7 @@ class SubscriptionController extends Controller
         $token = Str::random(64);
 
         auth()->user()->purchases()->create([
-            'tier'              => 2,
+            'tier'              => 2, // 2 is for subscriptions, 1 will be for single trials
             'payment_type'      => 'recurring',
             'paypal_identifier' => $token,
             'status'            => 'pending',

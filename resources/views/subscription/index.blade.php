@@ -179,20 +179,28 @@
                                         },
                                         createSubscription: function(data, actions) {
                                             return fetch('/subscribe/initiate', {
-                                                method: 'POST',
-                                                headers: {
-                                                    'X-CSRF-TOKEN': '{{ csrf_token() }}',
-                                                    'Content-Type': 'application/json',
-                                                },
-                                            })
-                                            .then(res => res.json())
-                                            .then(data => actions.subscription.create({
-                                                plan_id: '{{ config('services.paypal.container_id') }}',
-                                                custom_id: data.custom_id
-                                            }));
+                                                    method: 'POST',
+                                                    headers: {
+                                                        'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                                                        'Content-Type': 'application/json',
+                                                    },
+                                                })
+                                                .then((res) => {
+                                                    return res.json();
+                                                })
+                                                .then((data) => {
+                                                    return actions.subscription.create({
+                                                        plan_id: '{{ config('services.paypal.container_id') }}',
+                                                        custom_id: data.custom_id
+                                                    })
+                                                });
                                         },
                                         onApprove: function(data, actions) {
-                                            window.location.href = '/subscribe/pending';
+                                            console.log('data');
+                                            console.log(data);
+                                            console.log('actions');
+                                            console.log(actions);
+                                            // window.location.href = '/subscribe/pending';
                                         }
                                     }).render('#paypal-button-container-{{ config('services.paypal.container_id') }}'); // Renders the PayPal button
                                 </script>
@@ -202,7 +210,7 @@
                                 >
                                     <small
                                         class="text-muted"
-                                    >🔧 Join today to become a welding professional</small>
+                                    >Join today to become a welding professional</small>
                                 </div>
                             </div>
                         </div>
