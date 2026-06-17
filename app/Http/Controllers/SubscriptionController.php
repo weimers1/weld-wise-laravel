@@ -23,6 +23,7 @@ class SubscriptionController extends Controller
 
     public function initiate(Request $request)
     {
+        // UUID for the purchase to link it to the subscription
         $token = Str::random(64);
 
         auth()->user()->purchases()->create([

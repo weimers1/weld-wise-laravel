@@ -163,16 +163,16 @@
 
                                 <!-- Add your PayPal subscription button code here -->
                                 <div
-                                    id="paypal-button-container-{{ config('services.paypal.container_id') }}"
+                                    id="paypal-button-container-P-2MC79029C63990024NIZIJ6Y"
                                 ></div>
                                 <script
-                                    src="https://www.paypal.com/sdk/js?client-id={{ config('services.paypal.client_id') }}&vault=true&intent=subscription"
+                                    src="https://www.paypal.com/sdk/js?client-id=AeCRzW5Omj3a0gCY-Ih2fJE8G0bY7aOzyTMBleNCzT2AzDLufpjbsuRZjP95lrjbJe9tbaKYyflKv3mu&vault=true&intent=subscription"
                                     data-sdk-integration-source="button-factory"
                                 ></script>
                                 <script>
                                     paypal.Buttons({
                                         style: {
-                                            shape: 'rect',
+                                            shape: 'pill',
                                             color: 'blue',
                                             layout: 'vertical',
                                             label: 'subscribe'
@@ -190,7 +190,7 @@
                                                 })
                                                 .then((data) => {
                                                     return actions.subscription.create({
-                                                        plan_id: '{{ config('services.paypal.container_id') }}',
+                                                        plan_id: 'P-2MC79029C63990024NIZIJ6Y',
                                                         custom_id: data.custom_id
                                                     })
                                                 });
@@ -200,9 +200,9 @@
                                             console.log(data);
                                             console.log('actions');
                                             console.log(actions);
-                                            // window.location.href = '/subscribe/pending';
+                                            alert(data.subscriptionID); // You can add optional success message for the subscriber here
                                         }
-                                    }).render('#paypal-button-container-{{ config('services.paypal.container_id') }}'); // Renders the PayPal button
+                                    }).render('#paypal-button-container-P-2MC79029C63990024NIZIJ6Y'); // Renders the PayPal button
                                 </script>
 
                                 <div
