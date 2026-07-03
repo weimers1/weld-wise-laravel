@@ -163,7 +163,7 @@
 
                                 <!-- Add your PayPal subscription button code here -->
                                 <div
-                                    id="paypal-button-container-P-2MC79029C63990024NIZIJ6Y"
+                                    id="paypal-button-container-P-5EH90947ML7285734NJD22GA"
                                 ></div>
                                 <script
                                     src="https://www.paypal.com/sdk/js?client-id=AeCRzW5Omj3a0gCY-Ih2fJE8G0bY7aOzyTMBleNCzT2AzDLufpjbsuRZjP95lrjbJe9tbaKYyflKv3mu&vault=true&intent=subscription"
@@ -190,7 +190,7 @@
                                                 })
                                                 .then((data) => {
                                                     return actions.subscription.create({
-                                                        plan_id: 'P-2MC79029C63990024NIZIJ6Y',
+                                                        plan_id: 'P-5EH90947ML7285734NJD22GA'
                                                         custom_id: data.custom_id
                                                     })
                                                 });
@@ -202,7 +202,7 @@
                                             console.log(actions);
                                             alert(data.subscriptionID); // You can add optional success message for the subscriber here
                                         }
-                                    }).render('#paypal-button-container-P-2MC79029C63990024NIZIJ6Y'); // Renders the PayPal button
+                                    }).render('#paypal-button-container-P-5EH90947ML7285734NJD22GA'); // Renders the PayPal button
                                 </script>
 
                                 <div
